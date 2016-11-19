@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('yiyuanduobao_shop', '0053_auto_20160510_1010'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='shopbanner',
+            name='shop',
+            field=models.ForeignKey(default='', verbose_name=b'\xe6\x89\x80\xe5\xb1\x9e\xe5\x95\x86\xe5\xba\x97', to='yiyuanduobao_shop.Shop'),
+            preserve_default=False,
+        ),
+    ]

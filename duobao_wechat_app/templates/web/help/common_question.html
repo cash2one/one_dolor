@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Mobile Devices Support @begin -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+    name="viewport">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="false" name="twcClient" id="twcClient">
+    <meta name="wap-font-scale" content="no">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <!--允许全屏模式-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--指定sari的样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="telephone=no" name="format-detection" />
+    <!-- Mobile Devices Support @end -->
+    <title>
+      帮助
+    </title>
+    <script type="text/javascript">
+      var APP_ROOT = '';
+      var LOADER_IMG = 'http://1.fanwe.net/wap/Tpl/main/images/loader_img.gif';
+      var LOADING_IMG = 'http://1.fanwe.net/wap/Tpl/main/images/loading.gif';
+      var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+      var PAGE_TYPE = '';
+    </script>
+     <link rel="stylesheet" type="text/css" href="/static/css/help_detail.css"/>
+    <script type="text/javascript" src="/static/js/help_detail.js">
+    </script>
+    <script>
+      /*app 请求时候用到*/
+      $(function() {
+
+        //后退
+        $('#header_back_btn').click(function() {
+          var Expression = /http(s)?:\/\/?/;
+          var objExp = new RegExp(Expression);
+          var backurl = $(this).attr('backurl');
+          $(this).attr('backurl', '-1');
+
+          if (objExp.test(backurl) == true) {
+            location.href = backurl;
+          } else {
+            window.history.go( - 1);
+          }
+        });
+
+      });
+    </script>
+    <script type="text/javascript">
+      //减少移动端触发"Click"事件时300毫秒的时间差
+      window.addEventListener('load',
+      function() {
+        FastClick.attach(document.body);
+      },
+      false);
+    </script>
+  </head>
+  
+  <body>
+    <div class="header">
+      <div class="header-wrap">
+        <div class="c-hd split-line">
+          <section class="cut_city">
+            <a id="header_back_btn" backurl='-1'>
+              <i class="iconfont">
+                &#xe701;
+              </i>
+            </a>
+          </section>
+          <section class="logo_img">
+            帮助
+          </section>
+          <section class="cut_city">
+            <a id="header_back_btn" href="/index/?shop_id={{ shop_id }}">
+              <i class="iconfont home">
+                &#xe6ee;
+              </i>
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    </script>
+    <div class="wrap">
+      <div class="notice">
+        <h2>
+          常见问题
+        </h2>
+        <span class="notice_date">
+          2016-01-24
+        </span>
+        <div>
+          <p>
+            <span style="line-height:1.5;">
+              1、充值获得夺宝币，然后选择喜欢的商品开始夺宝；
+            </span>
+          </p>
+          <p>
+            <span style="line-height:1.5;">
+              <br />
+            </span>
+          </p>
+          <div>
+            2、点击一个感兴趣的商品，选择要参与的人次并支付，直接充值并参与夺宝。
+          </div>
+          <div>
+            <br />
+          </div>
+          <div>
+            1元夺宝，就是这么简单！
+          </div>
+          <div>
+            2、1元夺宝是怎么计算幸运号码的？
+          </div>
+          <div>
+            1）商品的最后一个号码分配完毕后，将公示该分配时间点前本站全部商品的最后20个参与时间；
+          </div>
+          <div>
+            2）将这20个时间的数值进行求和（得出数值A）（每个时间按时、分、秒、毫秒的顺序组合，如20:15:25.362则为201525362）；
+          </div>
+          <div>
+            3）为保证公平公正公开，系统还会等待一小段时间，取最近下一期中国福利彩票“老时时彩”的开奖结果（一个五位数值B）；
+          </div>
+          <div>
+            4）（数值A+数值B）除以该商品总需人次得到的余数 + 原始数 10000001，得到最终幸运号码，拥有该幸运号码者，直接获得该商品。
+          </div>
+          <div>
+            注：如遇福彩中心通讯故障，无法获取上述期数的中国福利彩票“老时时彩”开奖结果，且24小时内该期“老时时彩”开奖结果仍未公布，则默认“老时时彩”开奖结果为111111。
+          </div>
+          <div>
+            了解更多“老时时彩”信息
+          </div>
+          <div>
+            <br />
+          </div>
+          <div>
+            3、为什么要加入“老时时彩”开奖结果？
+          </div>
+          <div>
+            引入“老时时彩”开奖结果是为了保证幸运号码计算结果的绝对公平公正。
+          </div>
+          <div>
+            <br />
+          </div>
+          <div>
+            4、幸运号码的计算结果可信吗？
+          </div>
+          <div>
+            由于使用了“老时时彩”开奖结果作为参数，因此幸运号码肯定是未知的；
+          </div>
+          <div>
+            您可以绝对相信计算结果真实、可信。
+          </div>
+          <div>
+            <br />
+          </div>
+          <div>
+            5、怎样查看是否中奖？
+          </div>
+          <div>
+            个人中心有您的夺宝记录，点击对应的记录，即可知道该期夺宝的获得者
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gotop" data-com="gotop">
+      <a href="#">
+        <i class="iconfont">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+  <html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<!--Author by  春哥技术源码论坛 春哥 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no width=device-width">
+    <title>六一节！画个圆赢红包啦</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <STYLE TYPE="text/css" MEDIA=screen>
+    #desktop-ad {
+        display: block;
+        margin-left: -160px;
+        width: 320px;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        z-Index: 1000;
+        text-align: center;
+    }
+    </STYLE>
+    <script src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" language="JavaScript">
+        function HideContent(d) {
+            $('#' + d).hide();
+        }
+        function ShowContent(d) {
+            $('#' + d).show(1000);
+        }
+    </script>
+    <script type="text/javascript" src="/static/js/cookies.js"></script>
+    <script src="/static/js/paper-full.min.js"></script>
+    <script type="text/paperscript" canvas="canvas" src="/static/js/circle_origin.js"></script>
+ 
+
+</head>
+<body >
+    <canvas id="canvas" resize stats hidpi="on"></canvas>
+    <div id="inputpage">
+        <div id="middle">
+            <div id="name_form">
+                <p>载入中，请稍等。。。</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var loading = true;
+    </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Mobile Devices Support @begin -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+    name="viewport">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="false" name="twcClient" id="twcClient">
+    <meta name="wap-font-scale" content="no">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <!--允许全屏模式-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--指定sari的样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="telephone=no" name="format-detection" />
+    <!-- Mobile Devices Support @end -->
+    <title>
+      提交订单
+    </title>
+    <script type="text/javascript">
+      var APP_ROOT = '';
+	  var LOADER_IMG = '/static/gif/loader_img.gif';
+	  var LOADING_IMG = '/static/gif/loading.gif';
+      var AJAX_URL = '/user/choose_submit_order_type/';
+      var PAGE_TYPE = '';
+    </script>
+    <link rel="stylesheet" type="text/css" href="/static/css/submit_order_page.css"
+    />
+    <script type="text/javascript" src="/static/js/submit_order_page.js">
+    </script>
+    <script>
+      /*app 请求时候用到*/
+      $(function() {
+
+        //后退
+        $('#header_back_btn').click(function() {
+          var Expression = /http(s)?:\/\/?/;
+          var objExp = new RegExp(Expression);
+          var backurl = $(this).attr('backurl');
+          $(this).attr('backurl', '-1');
+
+          if (objExp.test(backurl) == true) {
+            location.href = backurl;
+          } else {
+            window.history.go( - 1);
+          }
+        });
+
+      });
+    </script>
+    <script type="text/javascript">
+      //减少移动端触发"Click"事件时300毫秒的时间差
+      window.addEventListener('load',
+      function() {
+        FastClick.attach(document.body);
+      },
+      false);
+    </script>
+  </head>
+  
+  <body>
+    <div class="header">
+      <div class="header-wrap">
+        <div class="c-hd split-line">
+          <section class="cut_city">
+            <a id="header_back_btn" backurl='-1'>
+              <i class="iconfont">
+                &#xe701;
+              </i>
+            </a>
+          </section>
+          <section class="logo_img">
+            提交订单
+          </section>
+          <section class="cut_city">
+            <a id="header_back_btn" href="/index/">
+              <i class="iconfont home">
+                &#xe6ee;
+              </i>
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var ajaxing = false; //ajax计算中，true是不允许提交订单
+      var order_id = ''; //订单号
+      
+    </script>
+    <div class="wrap">
+      <form action="/user/submit_order_result/?shop_id={{shop_id}}" method="GET"
+      id="pay-form" class="pay-form">
+        <div class="back-white">
+          <div class="goodsum list-li">
+            <header>
+              <i class="iconfont up-btn order-info-btn fr">
+                &#xe6c4;
+              </i>
+              <i class="iconfont down-btn order-info-btn fr">
+                &#xe6c3;
+              </i>
+            </header>
+          </div>
+
+          <!--留言-->
+          <!-- <div class="normal-fieldset">
+          <h4 class="mj-title m-t10 list-li">留言信息</h4>
+          <div class="textarea-box split-line">
+          <textarea name="content" placeholder="请填写附加要求"></textarea>
+          </div>
+          </div>
+          ==>
+          <!--end 留言-->
+          <!--支付方式-->
+          <div class="normal-fieldset">
+            <h4 class="mj-title m-t10 list-li">
+              选择支付方式
+            </h4>
+            <section class="items-common common-radio-box">
+              <div class="item-common list-li" style="border-bottom:none;">
+                <label class="pay-ways" rel="payment">
+                  <span class="payment-name" bank_name="" rel="119">
+                  </span>
+                  微信支付
+                </label>
+                <input class="payment-item" type="radio" value="3" name="payment" style="display:none;"
+                />
+              </div>
+            </section>
+          </div>
+          <!--end 支付方式-->
+          <div class="blank-line" style="color: #000">
+          </div>
+          <!--余额-->
+          <div class="normal-fieldset">
+            <h4 class="mj-title m-t10 list-li">
+              夺宝币支付
+            </h4>
+            <section class="items-common common-radio-box">
+              <div class="item-common list-li" style="border-bottom:none;">
+                <label class="pay-ways" rel="payment">
+                  <span class="payment-name" bank_name="" rel="119">
+                  </span>
+                  当前账户夺宝币余额：{{ balance }}元， 使用夺宝币余额支付
+                </label>
+                <input class="payment-item" type="radio" value="1" name="payment" style="display:none;"
+                />
+              </div>
+            </section>
+          </div>
+          <!--end 余额-->
+          <!--代金券-->
+          <div class="blank-line">
+          </div>
+          <!-- 选择红包 -->
+<!--           <div class="normal-fieldset">
+            <h4 class="mj-title m-t10 list-li">
+              请先择红包
+            </h4>
+            <div class="item-common list-li">
+              <i class="iconfont down-arrow">
+                &#xe6c3;
+              </i>
+              <select name="ecvsn" class="red-bag">
+                <option value="">
+                  不使用红包
+                </option>
+                <option value="386663316233">
+                  测试用
+                </option>
+                <option value="326161386565">
+                  测试1
+                </option>
+              </select>
+            </div>
+          </div> -->
+          <!--end代金券-->
+          <div class="blank-line">
+          </div>
+          <!--总计-->
+          <div id="cart_total">
+          </div>
+          <!--end总计-->
+          <div class="btn_order">
+            <input class="sub" type="submit" value="去结算">
+          </div>
+        </div>
+      </form>
+      <div class="blank50">
+      </div>
+    </div>
+  </body>
+  <html>

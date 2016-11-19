@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>夺宝记录</title>	
+<script type="text/javascript">
+	var APP_ROOT = '';
+  	var LOADER_IMG = '/static/gif/loader_img.gif';
+  	var LOADING_IMG = '/static/gif/loading.gif';
+	var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+	var PAGE_TYPE = '';
+	
+</script>
+<link rel="stylesheet" type="text/css" href="http://1.fanwe.cn/public/runtime/statics/wap/cac54bdd730584e07b230ad0c2f3317c.css?v=1.4.1046" />
+<script type="text/javascript" src="http://1.fanwe.cn/public/runtime/statics/wap/c072ab776433d627b3abb80ff4e6667f.js?v=1.4.1046"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+		
+	//后退
+	$('#header_back_btn').click(function(){
+		var Expression=/http(s)?:\/\/?/;
+		var objExp=new RegExp(Expression);
+		var backurl = $(this).attr('backurl');
+		$(this).attr('backurl','-1');
+		
+		if(objExp.test(backurl)==true){
+			location.href = backurl;
+		}else{
+			window.history.go(-1);
+		}
+	});
+	
+});
+</script>
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+</head> 
+<body>
+<div class="header">
+	<div class="header-wrap">
+		<div class="c-hd split-line">
+	        <section class="logo_img">夺宝记录</section>
+	    </div>
+	</div>
+</div>	
+<script type="text/javascript">
+	
+</script>
+
+
+<div class="slider-nav split-line">
+  <ul>
+    <li class="nav-item"><a href="/record/my_all_records/?shop_id={{ shop_id }}" class="cur">全部</a></li>
+    <li class="nav-item"><a href="#" class="cur">进行中</a></li>
+    <li class="nav-item"><a href="/record/my_over_records/?shop_id={{ shop_id }}"  >已揭晓</a></li>
+  </ul>
+</div>
+<div class="m-content">
+<ul class="scroll_bottom_list">
+		<li class="dblist inprogress">
+		<div class="dblistimg">
+		<a href="/wap/index.php?ctl=duobao&data_id=100000003&show_prog=1"><img alt="" src="http://1.fanwe.cn/public/attachment/201601/22/21/56a22b20a2536_300x300.jpg"/></a>
+		</div>
+		<div class="dblistmain">
+			<a class="tit" href="/wap/index.php?ctl=duobao&data_id=100000003&show_prog=1">1箱6瓶装 | 茅台 53度500毫升五星贵州茅台酒</a>
+			<div class="prl">
+				<div class="lable">期号&nbsp;:&nbsp;100000003</div>
+				<div class="progressBar">
+                    <span class="bar" style="width:0%"><i class="color"></i></span>
+                </div>
+				<div class="lable fl">总需&nbsp;:&nbsp;7599</div>
+				<div class="lable fl surplus">剩余&nbsp;:&nbsp;<em>7598</em></div>
+				<a class="tacked" href="/wap/index.php?ctl=duobao&data_id=100000003&show_prog=1">追加</a>
+			</div>
+			<div class="prl">
+				<div class="partake fl">本期参与&nbsp;:&nbsp;<em>1</em>人次</div>
+				<a class="lookno fr" href="/wap/index.php?ctl=uc_duobao_record&act=my_no&id=100000003&show_prog=1">查看我的号码</a>
+			</div>
+						<div class="announce">				
+				<div class="mline">等待开奖</div>
+				<div class="mline">揭晓时间&nbsp;:&nbsp;--</div>
+			</div>
+					</div>
+	</li>
+	
+		<li class="dblist inprogress">
+		<div class="dblistimg">
+		<a href="/wap/index.php?ctl=duobao&data_id=100000004&show_prog=1"><img alt="" src="http://1.fanwe.cn/public/attachment/201601/22/21/56a229e6cce08_300x300.jpg"/></a>
+		</div>
+		<div class="dblistmain">
+			<a class="tit" href="/wap/index.php?ctl=duobao&data_id=100000004&show_prog=1">索尼 A7R2 全画幅顶级微单旗舰套机 配24-240mm镜头</a>
+			<div class="prl">
+				<div class="lable">期号&nbsp;:&nbsp;100000004</div>
+				<div class="progressBar">
+                    <span class="bar" style="width:0%"><i class="color"></i></span>
+                </div>
+				<div class="lable fl">总需&nbsp;:&nbsp;28200</div>
+				<div class="lable fl surplus">剩余&nbsp;:&nbsp;<em>28190</em></div>
+				<a class="tacked" href="/wap/index.php?ctl=duobao&data_id=100000004&show_prog=1">追加</a>
+			</div>
+			<div class="prl">
+				<div class="partake fl">本期参与&nbsp;:&nbsp;<em>10</em>人次</div>
+				<a class="lookno fr" href="/wap/index.php?ctl=uc_duobao_record&act=my_no&id=100000004&show_prog=1">查看我的号码</a>
+			</div>
+						<div class="announce">				
+				<div class="mline">等待开奖</div>
+				<div class="mline">揭晓时间&nbsp;:&nbsp;--</div>
+			</div>
+					</div>
+	</li>
+	
+	</ul>
+</div>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+  		<ul class="menu_box">
+  			<li class="menu_item">
+  				<a href="/wap/index.php?show_prog=1">
+	  				<p><i class="iconfont">&#xe6ee;</i></p>
+	  				<p class="item_txt">首页</p>
+  				</a>
+  			</li>
+			<li class="menu_item">
+				<a href="/wap/index.php?ctl=anno&show_prog=1">
+					<p><i class="iconfont">&#xe6ed;</i></p>
+					<p class="item_txt">最新揭晓</p>
+				</a>
+			</li>
+  			<li class="menu_item">
+  				<a href="/wap/index.php?ctl=cart&show_prog=1">
+	  				<p style="position:relative;" >
+	  					<i class="iconfont">&#xe6ea;</i>
+	  					<div class="nav_cart_num" >0</div>
+	  				</p>
+	  				<p class="item_txt">清单</p>
+	  			</a>
+	  		</li>
+  			<li class="menu_item">
+  				<a href="/wap/index.php?ctl=uc_duobao_record&show_prog=1">
+  					<p><i class="iconfont">&#xe6e9;</i></p>
+  					<p class="item_txt">夺宝记录</p>
+  				</a>
+  			</li>
+  			<li class="menu_item">
+  				<a href="/wap/index.php?ctl=user_center&show_prog=1">
+  					<p><i class="iconfont">&#xe6ec;</i></p>
+  					<p class="item_txt">我</p>
+  				</a>
+  			</li>
+		</ul>
+		<a href="/o2onew/wap/biz.php?ctl=more"></a>
+	</div>
+</div>                <div class="gotop" data-com="gotop">
+				<a href="#">
+					<i class="iconfont"></i>
+				</a>
+			</div>
+	</body>
+<html>

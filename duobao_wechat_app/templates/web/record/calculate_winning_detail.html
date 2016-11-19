@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>中奖计算详情</title>	
+<script type="text/javascript">
+	var APP_ROOT = '';
+	  var LOADER_IMG = '/static/gif/loader_img.gif';
+	  var LOADING_IMG = '/static/gif/loading.gif';
+	var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+	var PAGE_TYPE = '';
+	
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/calculate_winning_detail.css" />
+<script type="text/javascript" src="/static/js/calculate_winning_detail.js"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+		
+	//后退
+	$('#header_back_btn').click(function(){
+		var Expression=/http(s)?:\/\/?/;
+		var objExp=new RegExp(Expression);
+		var backurl = $(this).attr('backurl');
+		$(this).attr('backurl','-1');
+		
+		if(objExp.test(backurl)==true){
+			location.href = backurl;
+		}else{
+			window.history.go(-1);
+		}
+	});
+	
+});
+</script>
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+</head> 
+<body>
+<div class="header">
+	<div class="header-wrap">
+	<div class="c-hd split-line">
+        <section class="cut_city">
+              <a id="header_back_btn" backurl='-1'><i class="iconfont">&#xe701;</i></a>
+	    </section>
+        <section class="logo_img">中奖计算详情</section>
+        <section class="cut_city">
+                      <a id="header_back_btn" href="/index/?shop_id={{shop_id}}"><i class="iconfont home">&#xe6ee;</i></a>
+        </section>
+     </div>
+	 </div>
+</div>	
+<script type="text/javascript">
+	
+</script>
+
+
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+var fair_check_link = "http://caipiao.163.com/award/cqssc/20160428.html";
+</script>
+<div class="wrap">
+    <div class="content">
+    	<div class="formula-wrap split-line">
+		<div class="formula">
+			<h1>计算公式</h1>
+			<p>[(数值A+数值B)&divide;商品所需人次]取余数+100000000</p>
+		</div>
+		</div>
+		<ul class="info-list">
+			<li class="split-line">
+				<h1>数值A</h1>
+				<p>= 截止该商品开奖时间点前最后50条（如不足50条取全部）全站参与记录</p>
+				<p class="open-box fr">展开<i class="iconfont">&#xe6c3;</i></p>
+				<p class="close-box fr">收起<i class="iconfont">&#xe6c4;</i></p>
+				<p>= <span>{{ total_sum_A }}</span></p>	
+			</li>
+			
+			<dl class="user-list">
+				<dt class="split-line">				
+				<p class="fl">夺宝时间</p>
+				用户账号
+				</dt>
+				{% for lottery_ticket_info in lottery_ticket_infos %}
+				<dd class="split-line">
+					<div class="txtbox">
+					<time>{{ lottery_ticket_info.timestr }}</time> 
+					 <span><i class="iconfont">&#xe6d4;</i>{{ lottery_ticket_info.timeint }}</span>
+					 </div>
+					 <p class="user-name">{{ lottery_ticket_info.customer }}</p>
+				</dd>
+				{% endfor %}
+			</dl>
+			
+			<li class="split-line">
+				<h1>数值B</h1>
+								<p>= 最近一期重庆时时彩的开奖结果</p>
+				<p>= 
+				
+								<span>{{ winner_lottery_result }}</span>		
+						
+			
+								<!-- (第160428001期 --><a  href="http://kjh.cailele.com/kj_ssc.shtml"  class="check">开奖查询</a>
+								</p>
+							</li>
+			<div class="blank-line split-line"></div>
+			<li class="split-line">
+				<h1>计算结果</h1>
+								<h2>幸运号码: <span>{{ item.winner_code }}</span></h2>
+							</li>
+		</ul>
+    </div>
+</div>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+  		<ul class="menu_box">
+	        <li class="menu_item">
+	          <a href="/index/?shop_id={{ shop_id }}">
+	            <p><i class="iconfont">&#xe6ee;</i></p>
+	            <p class="item_txt">首页</p>
+	          </a>
+	        </li>
+	      <li class="menu_item">
+	        <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+	          <p><i class="iconfont">&#58964;</i></p>
+	          <p class="item_txt">我的代卖</p>
+	        </a>
+	      </li>
+	        <li class="menu_item">
+	          <a href="/shop/cart/?shop_id={{ shop_id }}">
+	            <p style="position:relative;" >
+	              <i class="iconfont">&#xe6ea;</i>
+	              {% if cart_good_number > 0 %}
+	               <div class="nav_cart_num" id="nav_cart_num" style="display:block;" >{{cart_good_number}}</div>
+	              {% else %}
+	               <div class="nav_cart_num" id="nav_cart_num" >0</div>
+	              {% endif %}
+	            </p>
+	            <p class="item_txt">清单</p>
+	          </a>
+	        </li>
+	        <li class="menu_item">
+	          <a href="/record/my_all_records/?shop_id={{ shop_id }}">
+	            <p><i class="iconfont">&#xe6e9;</i></p>
+	            <p class="item_txt">夺宝记录</p>
+	          </a>
+	        </li>
+	        <li class="menu_item">
+	          <a href="/user/selfinfo/?shop_id={{ shop_id }}">
+	            <p><i class="iconfont">&#xe6ec;</i></p>
+	            <p class="item_txt">我</p>
+	          </a>
+	        </li>
+		</ul>
+		<a href="/o2onew/wap/biz.php?ctl=more"></a>
+	</div>
+</div>                <div class="gotop" data-com="gotop">
+				<a href="#">
+					<i class="iconfont"></i>
+				</a>
+			</div>
+	</body>
+<html>

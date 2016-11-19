@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>购物车</title>	
+<script type="text/javascript">
+	var APP_ROOT = '';
+    var LOADER_IMG = '/static/gif/loader_img.gif';
+    var LOADING_IMG = '/static/gif/loading.gif';
+	var AJAX_URL = '/shop/change_cart_list/';
+	var PAGE_TYPE = '';
+	
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/cart.css" />
+<script type="text/javascript" src="/static/js/cart.js"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+		
+	//后退
+	$('#header_back_btn').click(function(){
+		var Expression=/http(s)?:\/\/?/;
+		var objExp=new RegExp(Expression);
+		var backurl = $(this).attr('backurl');
+		$(this).attr('backurl','-1');
+		
+		if(objExp.test(backurl)==true){
+			location.href = backurl;
+		}else{
+			window.history.go(-1);
+		}
+	});
+	
+});
+</script>
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+<script type="text/javascript">
+	var jsondata;
+	$(function(){
+	    $.post("/shop/fetch_cart_json_data/?shop_id={{shop_id}}",{
+	      },function(data){
+	        if(data){
+	          jsondata = eval('('+data+')');
+	        }
+	      }
+	    );   
+	})	
+</script>
+</head> 
+<body>
+<!-- <div class="header">
+	<div class="header-wrap">
+		<div class="c-hd split-line">
+	        <section class="logo_img">购物车</section>
+	    </div>
+	</div>
+</div>	 -->
+<script type="text/javascript">
+	
+</script>
+
+
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+
+// var jsondata = {"7":{"id":"7","residue_count":6080,"number":"10","min_buy":"10","unit_price":"1.0000"},"6":{"id":"6","residue_count":6880,"number":"10","min_buy":"10","unit_price":"1.0000"},"8":{"id":"8","residue_count":118,"number":"1","min_buy":"1","unit_price":"1.0000"},"9":{"id":"9","residue_count":7280,"number":"1","min_buy":"1","unit_price":"1.0000"}};
+
+// alert(jsondata.toJSONString());
+// alert(JSON.stringify(jsondata));
+
+</script>
+<form name="buy_form" id="buy_form" action="/shop/submit_cart_merchant/?shop_id={{ shop_id }}" method="post">
+<div class="wrap">
+    		<ul class="cart-list">
+    			{% for item,item_info in item_list.iteritems  %}
+				<li class="split-line" data-id="{{ item_info.id }}">
+				  <div class="goods-img">
+				  	{% if item.merchant.mer_type_id = 3 %}
+					    <div class="tenyen">
+					    </div>
+				    {% endif %}
+				    <img src="{{ item.merchant.mer_thume_img_oss_link }}"
+				    alt="{{ item.merchant.mer_img_oss_link }}" style="height: 80px;width: 80px">
+				  </div>
+				  <div class="txtbox">
+				    <div class="flex-box">
+				      <h2>
+				        {{ item.merchant.name }}
+				      </h2>
+				    </div>
+				    <p>
+				      总需:
+				      <span>
+				        {{ item.merchant.price }}
+				      </span>
+				      人次，剩余
+				      <span class="rest">
+				        {{ item_info.surplus}}
+				      </span>
+				      人次
+				    </p>
+				    <div class="select-bar">
+				      <p>
+				        已经参与了
+					      <span class="rest">
+					        {{ item_info.take_part_num }}
+					      </span>
+				        人次
+				      </p>
+				      <div class="select-wrap">
+				        <div class="select">
+				          <a href="javascript:void(0);" class="iconfont split-line-right minus"
+				          data-id="{{ item_info.id }}">
+				            &#xe6d3;
+				          </a>
+				          <input name="num[{{ item_info.id }}]" class="buy_number buy-num-{{ item_info.id }}" type="tel" value="{{ item_info.price }}"
+				          data-id="{{ item_info.id }}" />
+				          <a href="javascript:void(0);" class="iconfont split-line-left plus" data-id="{{ item_info.id }}">
+				            &#xe6d1;
+				          </a>
+				          {% if item.merchant.mer_type_id = 3 %}
+				          <em>
+				            参与人次需是10的倍数
+				          </em>
+				          {% endif %}
+				        </div>
+				      </div>
+				      <i class="iconfont del-item-btn" data-id="{{ item_info.id }}">
+				        &#xe68d;
+				      </i>
+				    </div>
+				  </div>
+				  <div class="clear">
+				  </div>
+				</li>
+				{% endfor %}
+			</ul>
+    
+    </div>
+
+<div class="cart-floot">
+    <div class="cart-count-box split-line-top">
+        <div  class="cart-item-number">共{{ total_good_number }}商品，总计: <span>{{total_price}}元</span></div><input class="check-btn" type="submit" value="结算">
+    </div>
+</div>
+
+</form>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+  		<ul class="menu_box">
+  			<li class="menu_item">
+  				<a href="/index/?shop_id={{ shop_id }}">
+	  				<p><i class="iconfont">&#xe6ee;</i></p>
+	  				<p class="item_txt">首页</p>
+  				</a>
+  			</li>
+	      <li class="menu_item">
+	        <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+	          <p><i class="iconfont">&#58964;</i></p>
+	          <p class="item_txt">我的代卖</p>
+	        </a>
+	      </li>
+  			<li class="menu_item">
+  				<a href="#">
+	  				<p style="position:relative;" >
+	  					<i class="iconfont">&#xe6ea;</i>
+	  					{% if cart_total_number > 0 %}
+	  						<div id="nav_cart_num" class="nav_cart_num" style="display:block;">{{ cart_total_number }}</div>
+	  					{% else %}
+	  						<div id="nav_cart_num" class="nav_cart_num">0</div>
+	  					{% endif %}
+	  				</p>
+	  				<p class="item_txt">清单</p>
+	  			</a>
+	  		</li>
+  			<li class="menu_item">
+  				<a href="/record/my_all_records/?shop_id={{ shop_id }}">
+  					<p><i class="iconfont">&#xe6e9;</i></p>
+  					<p class="item_txt">夺宝记录</p>
+  				</a>
+  			</li>
+  			<li class="menu_item">
+  				<a href="/user/selfinfo/?shop_id={{ shop_id }}">
+  					<p><i class="iconfont">&#xe6ec;</i></p>
+  					<p class="item_txt">我</p>
+  				</a>
+  			</li>
+		</ul>
+		<a href="/o2onew/wap/biz.php?ctl=more"></a>
+	</div>
+</div>                <div class="gotop" data-com="gotop">
+				<a href="#">
+					<i class="iconfont"></i>
+				</a>
+			</div>
+	</body>
+<html>

@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>奖品详情</title> 
+<script type="text/javascript">
+  var APP_ROOT = '';
+  var LOADER_IMG = 'http://1.fanwe.cn/wap/Tpl/main/images/loader_img.gif';
+  var LOADING_IMG = 'http://1.fanwe.cn/wap/Tpl/main/images/loading.gif';
+  var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+  var PAGE_TYPE = '';
+  
+</script>
+<link rel="stylesheet" type="text/css" href="http://1.fanwe.cn/public/runtime/statics/wap/3349575de06d85e478c97e32c59b6d79.css?v=1.5.1116" />
+<script type="text/javascript" src="http://1.fanwe.cn/public/runtime/statics/wap/55ffb55295b681379a1c790d7aeb4059.js?v=1.5.1116"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+    
+  //后退
+  $('#header_back_btn').click(function(){
+    var Expression=/http(s)?:\/\/?/;
+    var objExp=new RegExp(Expression);
+    var backurl = $(this).attr('backurl');
+    $(this).attr('backurl','-1');
+    
+    if(objExp.test(backurl)==true){
+      location.href = backurl;
+    }else{
+      window.history.go(-1);
+    }
+  });
+  
+});
+</script>
+<script type="text/javascript">
+  //减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+</head> 
+<body>
+<div class="header">
+  <div class="header-wrap">
+  <div class="c-hd split-line">
+        <section class="cut_city">
+              <a id="header_back_btn" backurl='-1'><i class="iconfont">&#xe701;</i></a>
+      </section>
+        <section class="logo_img">奖品详情</section>
+        <section class="cut_city">
+                      <a id="header_back_btn" href="/wap/index.php?show_prog=1"><i class="iconfont home">&#xe6ee;</i></a>
+        </section>
+     </div>
+   </div>
+</div>  
+<script type="text/javascript">
+  
+</script>
+
+<script type="text/javascript">
+var cart_conf_json = {"max_buy":"92","min_buy":"1","current_buy":"92","residue_count":0};
+var cart_data_json = [];
+var to_cart_url = "/wap/index.php?ctl=cart&show_prog=1";
+</script>
+ 
+
+<div class="wrap page_detail">
+
+<div class="content">
+    <!--关于商品-->
+    <div class="goods-box goods-abbr">
+
+    <div class="top">
+        <div class="tenyen"></div>
+            <div class="flash" id="containerFlashAnimation">
+                <section>                    
+                      <div id="banner_box" class="banner_box banner_box_half">
+            <div class="bd">
+              <ul>
+                                                <li style="vertical-align: top; width: 100%; display: table-cell;height:8.5rem">
+                                    <img src="http://1.fanwe.cn/public/attachment/201601/23/16/56a33d69b709d_600x600.jpg" style="height:8.5rem;margin:0 auto;display:block;"/>
+                                </li>
+                                                  <li style="vertical-align: top; width: 100%; display: table-cell;height:8.5rem">
+                                    <img src="http://1.fanwe.cn/public/attachment/201601/23/16/56a33d76aeaa6_600x600.jpg" style="height:8.5rem;margin:0 auto;display:block;"/>
+                                </li>
+                                                  <li style="vertical-align: top; width: 100%; display: table-cell;height:8.5rem">
+                                    <img src="http://1.fanwe.cn/public/attachment/201601/23/16/56a33d7061a1a_600x600.jpg" style="height:8.5rem;margin:0 auto;display:block;"/>
+                                </li>
+                                </ul>
+            </div>
+            <div class="hd"><ul></ul></div>
+          </div>
+                </section>
+            </div>
+        </div>
+
+                <!-- 已揭晓 -->
+        <div class="good-announced">
+             <em class="announced">已揭晓</em>
+             <p>6瓶组合装 | 莱宝 黑色兔子精酿水蜜桃果汁小麦啤酒 307ml/瓶 <span>≥20% 水蜜桃果汁 混合发酵 部分地区不配送 敬请留意</span>
+             </p>
+             <div class="announced-box">
+                <div class="announcer">
+                </div>
+                 <div class="imgbox" style="background:url(http://1.fanwe.cn/public/avatar/noavatar_big.gif);background-size: contain">
+                
+                 </div>
+                 <ul>
+                     <li>
+                         <p>获奖者：</p>
+                         <div class="fl">
+                             <a href="javascript:void(0);"></a>
+                             <em>()</em>
+                         </div>
+                         <div class="clear"></div>
+                     </li>
+                     <li>
+                         <p>用户ID：</p>0（唯一不变标识）
+                     </li>
+                     <li>
+                         <p>期 &nbsp;&nbsp;&nbsp;号：</p>
+                         100000017                     </li>
+                     <li>
+                         <p>本期参与：</p>
+                         <span></span>人次
+                     </li>
+                     <li>
+                     <p>揭晓时间：</p>
+                     2016-04-13 20:42:01                     </li>
+                 </ul>
+                 <div class="clear"></div>
+                 <div class="luckycode">
+                     <div class="luckycode-bg"></div>
+                     <p class="fl">幸运号码：
+                     </p>
+                     <em class="fl">100000068</em>
+                     <a href="/wap/index.php?ctl=duobao&act=detail&data_id=100000017&show_prog=1">计算详情</a>
+                 </div>
+             </div>
+        </div>
+        <!-- 已揭晓 -->
+        
+                <div class="notin">
+            <p>您没有参与本期夺宝哦！</p>
+        </div>
+        <!-- 未参与 -->
+
+            <!-- 参与信息 -->
+        </div>
+    <div class="infomation">
+        <ul>
+            <li><a href="/wap/index.php?ctl=duobao&act=more&data_id=100000017&show_prog=1">图文详情<i class="iconfont">&#xe6fa;</i><span class="fr">建议在wifi下查看</span></a></li>
+            <div class="info-border"></div>
+            <li><a href="/wap/index.php?ctl=duobao&act=duobao_record&data_id=322&show_prog=1">往期揭晓<i class="iconfont">&#xe6fa;</i></a></li>
+            <!--<div class="info-border"></div>
+            <li><a href="#">晒单分享<i class="iconfont">&#xe6fa;</i></a></li>-->
+        </ul>
+    </div>
+    <!-- 信息 -->
+      <div class="join-data">
+        <div class="all-data split-line">
+                     所有参与记录<span class="fr">(<time>2016-04-09 16:46:14</time>开始)</span>
+        </div>
+        <dl>
+            <dt>
+            <time>2016-04-09 16:46:14</time>
+            </dt>
+      <div class="scroll_bottom_list">
+                  <dd>
+                <div class="imgbox" style="background:url(http://1.fanwe.cn/public/avatar/noavatar_small.gif);background-size: contain"></div>
+                <div class="txtbox">
+                    <a href="javascript:void(0);">fanweyydb</a>
+                    <em>(天津市 IP:60.28.224.13)</em>
+                    <p>参与了<span>92</span>人次 <time>2016-04-13 20:39:33</time></p>
+                </div>
+                <div class="clear"></div>
+            </dd>
+            </div>
+            <!-- 个人参与记录 -->
+
+        </dl>
+    
+    </div>
+  
+      <div class="gotonew">
+        <div class="gotonew-box">
+        <p>新一期正在火热进行...</p>
+        <a href="/wap/index.php?ctl=duobao&data_id=100004424&show_prog=1">立即前往</a>
+        </div>
+    </div>
+      <div class="joinin">
+        <div class="joinin-box">
+                        <input type="hidden" name="data_id" value="100000017"/>
+                        <a class="jionin-in joinin-btn" href="javascript:void(0);"  data-type="1">立即参与</a>
+            <a class="jionin-list joinin-btn" href="javascript:void(0);"  data-type="2">加入清单</a>
+                <a href="/wap/index.php?ctl=cart&show_prog=1" class="iconfont-box">
+                <i class="iconfont">&#xe658;</i>
+                <div class="goods-in-list">1</div>
+                </a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<div class="am-layer">
+    <div class="am-layer-title"><span class="title-txt">人次期数选择</span><div class="cencel-btn iconfont">&#xe608;</div></div>
+  <div class="am-layer-con">
+      <div class="item-box">
+        <div class="item-title">
+            参与人次
+        </div>
+        <div class="item-con">
+            <div class="buy-num-box">
+                <a class="iconfont reduce-btn count-btn">&#xe6d3;</a>
+                <input type="text" value="1" name="buy_num" class="buy-num-input"  />
+                <a class="iconfont plus-btn count-btn">&#xe6d1;</a>
+            </div>
+            <div class="blank5"></div>
+            <div class="min-buy-box"><em>参与人次需是1的倍数</em></div>
+        </div>
+      </div>
+      <div class="item-floot sub-btn-list">
+        <div class="sub-btn-1 f-btn-box"><a class="add_cart_item" href="javascript:void(0);" data-type="1">1元夺宝</a></div>
+        <div class="sub-btn-2 f-btn-box"><a class="add_cart_item" href="javascript:void(0);" data-type="2" >加入清单</a></div>
+      </div>
+  </div>
+</div>
+<div class="blank50"></div>
+
+  </body>
+<html>

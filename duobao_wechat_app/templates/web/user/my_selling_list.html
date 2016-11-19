@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Mobile Devices Support @begin -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+    name="viewport">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="false" name="twcClient" id="twcClient">
+    <meta name="wap-font-scale" content="no">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <!--允许全屏模式-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--指定sari的样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="telephone=no" name="format-detection" />
+    <!-- Mobile Devices Support @end -->
+    <title>
+      我的代卖商品
+    </title>
+    <script type="text/javascript">
+      var APP_ROOT = '';
+    var LOADER_IMG = '/static/gif/loader_img.gif';
+    var LOADING_IMG = '/static/gif/loading.gif';
+      var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+      var PAGE_TYPE = '';
+    </script>
+    <link rel="stylesheet" type="text/css" href="/static/css/my_selling_list.css"
+    />
+    <script type="text/javascript" src="/static/js/my_selling_list.js">
+    </script>
+    <script>
+      /*app 请求时候用到*/
+      $(function() {
+
+        //后退
+        $('#header_back_btn').click(function() {
+          var Expression = /http(s)?:\/\/?/;
+          var objExp = new RegExp(Expression);
+          var backurl = $(this).attr('backurl');
+          $(this).attr('backurl', '-1');
+
+          if (objExp.test(backurl) == true) {
+            location.href = backurl;
+          } else {
+            window.history.go( - 1);
+          }
+        });
+
+      });
+    </script>
+    <script type="text/javascript">
+      //减少移动端触发"Click"事件时300毫秒的时间差
+      window.addEventListener('load',
+      function() {
+        FastClick.attach(document.body);
+      },
+      false);
+    </script>
+  </head>
+  
+  <body>
+<!--     <div class="header">
+      <div class="header-wrap">
+        <div class="c-hd split-line">
+          <section class="cut_city">
+            <a id="header_back_btn" backurl='-1'>
+              <i class="iconfont">
+                &#xe701;
+              </i>
+            </a>
+          </section>
+          <section class="logo_img">
+            夺宝活动
+          </section>
+          <section class="cut_city">
+            <a id="header_back_btn" href="/wap/index.php?show_prog=1">
+              <i class="iconfont home">
+                &#xe6ee;
+              </i>
+            </a>
+          </section>
+        </div>
+      </div>
+    </div> -->
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      //减少移动端触发"Click"事件时300毫秒的时间差
+      window.addEventListener('load',
+      function() {
+        FastClick.attach(document.body);
+      },
+      false);
+    </script>
+    <div class="wrap">
+      <div class="content">
+        <ul class="goods-list scroll_bottom_list">
+
+          {% for item,iteminfo in iteminfo.items %}
+          <li>
+            <div>
+              <div class="imgbox">
+                <a href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}&shop_id={{ shop_id }}">
+                  <img src="{{ item.merchant.mer_thume_img_oss_link }}"
+                  alt="">
+                </a>
+                {% if item.merchant.mer_type_id == 3 %}
+                <div class="tenyen">
+                </div>
+                {% endif %}
+              </div>
+              <div class="info">
+                <a href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}&shop_id={{ shop_id }}">
+                  <header>
+                    {{item.merchant.name}}
+                  </header>
+                  <progress max="{{item.merchant.price}}" value="{{ iteminfo.take_part_price }}">
+                  </progress>
+                  <p class="fl">
+                    总需
+                    <span class="all">
+                      {{item.merchant.price}}
+                    </span>
+                  </p>
+                  <p class="fr">
+                    剩余
+                    <span class="rest">
+                      {{iteminfo.surplus}}
+                    </span>
+                  </p>
+                </a>
+              </div>
+              <a class="add_cart_item" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}&shop_id={{ shop_id }}">
+                进入
+              </a>
+            </div>
+          </li>
+          {% endfor %}
+
+        </ul>
+<!--         <div class="fy scroll_bottom_page">
+          &nbsp;
+          <span class='current'>
+            1
+          </span>
+          &nbsp;
+          <a href='/wap/index.php?ctl=duobaos&show_prog=1&page=2'>
+            &nbsp;2&nbsp;
+          </a>
+          &nbsp;
+          <a href='/wap/index.php?ctl=duobaos&show_prog=1&page=3'>
+            &nbsp;3&nbsp;
+          </a>
+          &nbsp;
+          <a href='/wap/index.php?ctl=duobaos&show_prog=1&page=4'>
+            &nbsp;4&nbsp;
+          </a>
+          <a href='/wap/index.php?ctl=duobaos&show_prog=1&page=2' class='btn2'>
+            下一页
+          </a>
+        </div> -->
+      </div>
+    </div>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+      <ul class="menu_box">
+        <li class="menu_item">
+          <a href="/index/?shop_id={{ shop_id }}">
+            <p><i class="iconfont">&#xe6ee;</i></p>
+            <p class="item_txt">首页</p>
+          </a>
+        </li>
+      <li class="menu_item">
+        <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+          <p><i class="iconfont">&#58964;</i></p>
+          <p class="item_txt">我的代卖</p>
+        </a>
+      </li>
+        <li class="menu_item">
+          <a href="/shop/cart/?shop_id={{ shop_id }}">
+            <p style="position:relative;" >
+              <i class="iconfont">&#xe6ea;</i>
+              {% if cart_good_number > 0 %}
+               <div class="nav_cart_num" id="nav_cart_num" style="display:block;" >{{cart_good_number}}</div>
+              {% else %}
+               <div class="nav_cart_num" id="nav_cart_num" >0</div>
+              {% endif %}
+            </p>
+            <p class="item_txt">清单</p>
+          </a>
+        </li>
+        <li class="menu_item">
+          <a href="/record/my_all_records/?shop_id={{ shop_id }}">
+            <p><i class="iconfont">&#xe6e9;</i></p>
+            <p class="item_txt">夺宝记录</p>
+          </a>
+        </li>
+        <li class="menu_item">
+          <a href="/user/selfinfo/?shop_id={{ shop_id }}">
+            <p><i class="iconfont">&#xe6ec;</i></p>
+            <p class="item_txt">我</p>
+          </a>
+        </li>
+    </ul>
+    <!-- <a href="/o2onew/wap/biz.php?ctl=more"></a> -->
+  </div>
+</div>

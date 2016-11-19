@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Mobile Devices Support @begin -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+    name="viewport">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="false" name="twcClient" id="twcClient">
+    <meta name="wap-font-scale" content="no">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <!--允许全屏模式-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--指定sari的样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="telephone=no" name="format-detection" />
+    <!-- Mobile Devices Support @end -->
+    <title>
+      帮助
+    </title>
+    <script type="text/javascript">
+      var APP_ROOT = '';
+      var LOADER_IMG = 'http://1.fanwe.net/wap/Tpl/main/images/loader_img.gif';
+      var LOADING_IMG = 'http://1.fanwe.net/wap/Tpl/main/images/loading.gif';
+      var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+      var PAGE_TYPE = '';
+    </script>
+    <link rel="stylesheet" type="text/css" href="/static/css/help_detail.css"/>
+    <script type="text/javascript" src="/static/js/help_detail.js">
+    </script>
+    <script>
+      /*app 请求时候用到*/
+      $(function() {
+
+        //后退
+        $('#header_back_btn').click(function() {
+          var Expression = /http(s)?:\/\/?/;
+          var objExp = new RegExp(Expression);
+          var backurl = $(this).attr('backurl');
+          $(this).attr('backurl', '-1');
+
+          if (objExp.test(backurl) == true) {
+            location.href = backurl;
+          } else {
+            window.history.go( - 1);
+          }
+        });
+
+      });
+    </script>
+    <script type="text/javascript">
+      //减少移动端触发"Click"事件时300毫秒的时间差
+      window.addEventListener('load',
+      function() {
+        FastClick.attach(document.body);
+      },
+      false);
+    </script>
+  </head>
+  
+  <body>
+    <div class="header">
+      <div class="header-wrap">
+        <div class="c-hd split-line">
+          <section class="cut_city">
+            <a id="header_back_btn" backurl='-1'>
+              <i class="iconfont">
+                &#xe701;
+              </i>
+            </a>
+          </section>
+          <section class="logo_img">
+            一元夺宝服务协议
+          </section>
+          <section class="cut_city">
+            <a id="header_back_btn" href="/index/?shop_id={{ shop_id }}">
+              <i class="iconfont home">
+                &#xe6ee;
+              </i>
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    </script>
+    <div class="wrap">
+      <div class="notice">
+        <h2>
+          一元夺宝平台服务协议
+        </h2>
+        <span class="notice_date">
+          2016-04-10
+        </span>
+        <div>
+          欢迎访问桔叶一元夺宝平台，申请使用桔叶科技公司提供的一元夺宝平台服务（以下简称“一元夺宝”，“一元夺宝”指用户花费1元兑换一个夺宝币，用户可凭夺宝币使用一元夺宝的服务），请您（下列简称为“用户”）仔细阅读以下全部内容（特别是粗体下划线标注的内容）。如用户不同意本服务条款任意内容，请勿注册或使用一元夺宝。
+        </div>
+
+      <div id="wmd-preview-section-604" class="wmd-preview-section preview-content">
+        <h1 id="一元夺宝平台服务协议">
+          一元夺宝平台服务协议
+        </h1>
+        <p>
+          　　欢迎访问一元夺宝平台（
+          <a href="http://1.juye51.com" target="_blank">
+            http://1.juye51.com
+          </a>
+          ），申请使用桔叶科技提供的一元夺宝平台服务（包括一元夺宝和全价购买服务），请您（下列简称为“用户”）仔细阅读以下全部内容（特别是粗体下划线标注的内容）。如用户不同意本服务条款任意内容，请勿注册或使用一元夺宝平台服务。如用户通过进入注册程序并勾选“我同意一元夺宝平台服务协议”，即表示用户与桔叶科技公司已达成协议，自愿接受本服务条款的所有内容。
+          <br>
+          一、用户使用一元夺宝平台服务的前提条件
+          <br>
+          1、用户拥有桔叶科技认可的帐号，包括但不限于：
+          <br>
+          （1）微信帐号，用户是通过微信帐号使用一元夺宝平台服务的。
+          <br>
+          （2）第三方帐号，用户可使用QQ帐号、微信帐号、微博帐号等其他桔叶科技公司认可的帐号在同意本服务条款后使用一元夺宝平台服务。
+          <br>
+          2、用户在使用一元夺宝平台服务时须具备相应的权利能力和行为能力，能够独立承担法律责任，如果用户在18周岁以下，必须在父母或监护人的监护参与下才能使用本站。
+          <br>
+          二、用户管理
+          <br>
+          1、用户ID
+          <br>
+          用户首次登录一元夺宝平台时，一元夺宝平台会为每位用户生成一个帐户ID，作为其使用一元夺宝平台服务的唯一身份标识，用户需要对其帐户项下发生的所有行为负责。
+          <br>
+          2、用户资料完善
+          <br>
+          用户应当在使用一元夺宝平台服务时完善个人资料，用户资料包括但不限于个人手机号码、收货地址、帐号昵称、头像、密码时输入的所有信息。
+          <br>
+          用户在完善个人资料时承诺遵守法律法规、社会主义制度、国家利益、公民合法权益、公共秩序、社会道德风尚和信息真实性等七条底线，不得在资料中出现违法和不良信息，且用户保证其在完善个人资料和使用帐号时，不得有以下情形：
+          <br>
+          <strong>
+            （1）违反宪法或法律法规规定的；
+          </strong>
+          <br>
+          <strong>
+            （2）危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；
+          </strong>
+          <br>
+          <strong>
+            （3）损害国家荣誉和利益的，损害公共利益的；
+          </strong>
+          <br>
+          <strong>
+            （4）煽动民族仇恨、民族歧视，破坏民族团结的；
+          </strong>
+          <br>
+          <strong>
+            （5）破坏国家宗教政策，宣扬邪教和封建迷信的；
+          </strong>
+          <br>
+          <strong>
+            （6）散布谣言，扰乱社会秩序，破坏社会稳定的
+          </strong>
+          <br>
+          <strong>
+            （7）散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；
+          </strong>
+          <br>
+          <strong>
+            （8）侮辱或者诽谤他人，侵害他人合法权益的；
+          </strong>
+          <br>
+          <strong>
+            （9）含有法律、行政法规禁止的其他内容的。
+          </strong>
+          <br>
+          若用户提供给桔叶科技公司的资料不准确，不真实，含有违法或不良信息的，桔叶科技公司有权不予完善，并保留终止用户使用一元夺宝平台服务的权利。若用户以虚假信息骗取帐号ID或帐号头像、个人简介等注册资料存在违法和不良信息的，桔叶科技公司有权采取通知限期改正、暂停使用、注销登记等措施。对于冒用关联机构或社会名人注册帐号名称的，桔叶科技公司有权注销该帐号，并向政府主管部门进行报告。
+          <br>
+          根据相关法律、法规规定以及考虑到一元夺宝平台服务的重要性，用户同意：
+          <br>
+          <strong>
+            （1）在完善资料时提交个人有效身份信息进行实名认证；
+          </strong>
+          <br>
+          <strong>
+            （2）提供及时、详尽及准确的用户资料；
+          </strong>
+          <br>
+          <strong>
+            （3）不断更新用户资料，符合及时、详尽准确的要求，对完善个人资料时填写的身份证件信息不能更新。
+          </strong>
+          <br>
+          <strong>
+            （4）用户有证明该帐号为本人所有的义务，需能提供微信登录或第三方平台注册资料以证明该帐号为本人所有，否则桔叶科技公司有权暂缓向用户交付其所获得的商品。
+          </strong>
+          <br>
+          <strong>
+            （5）用户在获取奖品后需要在7天内提交自己的收货地址，否则桔叶科技公司有权取消奖品的配送并将其收回。
+          </strong>
+          <br>
+          3、夺宝币
+          <br>
+          （1）夺宝币必须通过桔叶科技公司提供或认可的平台获得，从非桔叶科技公司提供或认可的平台所获得的夺宝币将被认定为来源不符合本服务协议，桔叶科技公司有权拒绝从非桔叶科技公司提供或认可的平台所获得的夺宝币在一元夺宝平台中使用。
+          <br>
+          （2）夺宝币及红包不能在一元夺宝平台之外使用或者转移给其他用户。
+          <br>
+          4、红包
+          <br>
+          （1）用户在推荐其他用户参与桔叶科技公司的一元夺宝后，可以按规则获取红包。所得红包可以通过微信红包的形式进行领取。
+          <br>
+          （2）在一元夺宝平台所获得红包在2日后可以进行领取（微信红包形式）。
+          <br>
+          5、用户应当保证在使用一元夺宝平台服务的过程中遵守诚实信用原则，不扰乱一元夺宝平台的正常秩序，不得通过使用他人帐户、一人注册多个帐户、使用程序自动处理等非法方式损害他人或桔叶科技公司的利益。
+          <br>
+          6、若用户存在任何违法或违反本服务协议约定的行为，桔叶科技公司有权视用户的违法或违规情况适用以下一项或多项处罚措施：
+          <br>
+          （1）责令用户改正违法或违规行为；
+          <br>
+          （2）中止、终止部分或全部服务；
+          <br>
+          （3）取消用户夺宝订单并取消商品发放（若用户已获得商品）， 且用户已获得的夺宝币不予退回；
+          <br>
+          （4）冻结或注销用户帐号及其帐号中的夺宝币（如有）；
+          <br>
+          （5）其他桔叶科技公司认为合适在符合法律法规规定的情况下的处罚措施。
+          <br>
+          若用户的行为造成桔叶科技公司及其关联公司损失的，用户还应承担赔偿责任。
+          <br>
+          7、若用户发表侵犯他人权利或违反法律规定的言论，桔叶科技公司有权停止传输并删除其言论、禁止该用户发言、注销用户帐号及其帐号中的夺宝币（如有），同时，桔叶科技公司保留根据国家法律法规、相关政策向有关机关报告的权利。
+          <br>
+          三、一元夺宝平台服务的规则
+          <br>
+          1、释义
+          <br>
+          （1）夺宝币：指用户为获得商品所支付并由桔叶科技公司预收货款后获得的使用一元夺宝平台服务的凭据。
+          <br>
+          （2）夺宝号码：指用户使用夺宝币参与一元夺宝服务时所获取的随机分配号码。
+          <br>
+          （3）幸运号码：指与某件商品的全部夺宝号码分配完毕后，一元夺宝根据夺宝规则（详见一元夺宝官方页面）计算出的一个号码。持有该幸运号码的用户可直接获得该商品。
+          <br>
+          （4）一元夺宝：指用户花费一元兑换一个夺宝币，然后凭夺宝币参与一元夺宝平台活动，并在使用夺宝币后根据宝石获得规则获取相应宝石的形式。
+          <br>
+          （5）红包：指用户某种行为（如推荐其他用户等）一元夺宝平台给用户的奖励，可以通过微信红包的形式进行领取。
+          <br>
+          2、桔叶科技公司承诺遵循公平、公正、公开的原则运营一元夺宝平台，确保所有用户在一元夺宝平台中享受同等的权利与义务，夺宝结果向所有用户公示。
+          <br>
+          3、用户知悉，除本协议另有约定外，无论是否获得商品，用户用于参与一元夺宝平台活动的夺宝币不能退回；其完全了解参与一元夺宝平台活动存在的风险，桔叶科技公司不保证用户参与一元夺宝一定会获得商品，但参与后可根据规则获取一定积分。
+          <br>
+          4、用户通过参与一元夺宝平台活动获得商品后，应在7天内登录一元夺宝平台提交或确认收货地址，否则视为放弃该商品，用户因此行为造成的损失，桔叶科技公司不承担任何责任。商品由桔叶科技公司或经桔叶科技公司确认的第三方商家提供及发货。
+          <br>
+          5、用户通过参与一元夺宝平台活动获得的商品，享受该商品生产厂家提供的三包服务，具体三包规定以该商品生产厂家公布的为准。
+          <br>
+          6、如果下列情形发生，桔叶科技公司有权取消用户夺宝订单：
+          <br>
+          （1）因不可抗力、一元夺宝平台系统发生故障或遭受第三方攻击，或发生其他桔叶科技公司无法控制的情形；
+          <br>
+          （2）根据桔叶科技公司已经发布的或将来可能发布或更新的各类规则、公告的规定，桔叶科技公司有权取消用户订单的情形。
+          <br>
+          桔叶科技公司有权取消用户的订单时，用户可申请退还夺宝币，所退夺宝币将在3个工作日内退还至用户帐户中。
+          <br>
+          7、若某件商品的夺宝号码从开始分配之日起90天未分配完毕，则桔叶科技公司有权取消该件商品的夺宝活动，并向用户退还夺宝币，所退还夺宝币将在3个工作日内退还至用户帐户中。
+          <br>
+          四、本服务协议的修改
+          <br>
+          用户知晓桔叶科技公司不时公布或修改的与本服务协议有关的其他规则、条款及公告等是本服务协议的组成部分。桔叶科技公司有权在必要时通过在一元夺宝平台内发出公告等合理方式修改本服务协议，用户在享受各项服务时，应当及时查阅了解修改的内容，并自觉遵守本服务协议。用户如继续使用本服务协议涉及的服务，则视为对修改内容的同意，当发生有关争议时，以最新的服务协议为准；用户在不同意修改内容的情况下，有权停止使用本服务协议涉及的服务。
+        </p>
+      </div>        
+      </div>
+    </div>
+    <div class="gotop" data-com="gotop">
+      <a href="#">
+        <i class="iconfont">
+          
+        </i>
+      </a>
+    </div>
+  </body>
+  <html>

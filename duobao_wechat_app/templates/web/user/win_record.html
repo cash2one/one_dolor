@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>中奖记录</title>	
+<script type="text/javascript">
+	var APP_ROOT = '';
+	var LOADER_IMG = 'http://1.fanwe.cn/wap/Tpl/main/images/loader_img.gif';
+	var LOADING_IMG = 'http://1.fanwe.cn/wap/Tpl/main/images/loading.gif';
+	var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+	var PAGE_TYPE = '';
+	
+</script>
+<link rel="stylesheet" type="text/css" href="http://1.fanwe.cn/public/runtime/statics/wap/a74fb7d81732386d22d84b6dbc9251ad.css?v=1.4.1046" />
+<script type="text/javascript" src="http://1.fanwe.cn/public/runtime/statics/wap/673cbd2b8452728e11b659a4bafc4e4d.js?v=1.4.1046"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+		
+	//后退
+	$('#header_back_btn').click(function(){
+		var Expression=/http(s)?:\/\/?/;
+		var objExp=new RegExp(Expression);
+		var backurl = $(this).attr('backurl');
+		$(this).attr('backurl','-1');
+		
+		if(objExp.test(backurl)==true){
+			location.href = backurl;
+		}else{
+			window.history.go(-1);
+		}
+	});
+	
+});
+</script>
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+</head> 
+<body>
+<div class="header">
+	<div class="header-wrap">
+	<div class="c-hd split-line">
+        <section class="cut_city">
+              <a id="header_back_btn" backurl='-1'><i class="iconfont">&#xe701;</i></a>
+	    </section>
+        <section class="logo_img">中奖记录</section>
+        <section class="cut_city">
+                      <a id="header_back_btn" href="/wap/index.php?show_prog=1"><i class="iconfont home">&#xe6ee;</i></a>
+        </section>
+     </div>
+	 </div>
+</div>	
+<script type="text/javascript">
+	
+</script>
+
+
+<div class="wrap">
+    <div class="content">
+      <header class="uc-info-head">
+        <div class="head-pic fl">
+        <img src="http://1.fanwe.cn/public/avatar/noavatar_big.gif" http://1.fanwe.cn/public/avatar/noavatar_big.gif width="100%" height="100%">
+        </div>
+        <div class="user-box fl">
+        <p class="user-name">fanweyydb</p>
+        <p class="user-id">ID:<span>240</span></p>
+        </div>
+      </header>
+            <ul class="win-list scroll_bottom_list">
+      	      	
+        <li class="split-line">
+        <a href="/wap/index.php?ctl=duobao&data_id=100000000&show_prog=1">
+          <div class="goods-img">
+            <img src="http://1.fanwe.cn/public/attachment/201601/22/20/56a2253ee7627_75x75.jpg" alt="">
+          </div>
+          </a>
+          <div class="txtbox">
+          <a href="/wap/index.php?ctl=duobao&data_id=100000000&show_prog=1">
+          <div class="flex-box">
+            <h2>Apple iPhone6s Plus 64G 颜色随机</h2>
+          </div>
+          </a>
+            <dl>
+
+              <dd>参与期号:<span class="code">100000000</span></dd>
+              <dd>幸运号码:<span class="luckycode">100002467</span></dd>
+
+              <dd>下单时间:<span>2016-04-09 16:55:59</span></dd>
+              <dd>状态:<span class="status_info">
+	              				  												请完善配送地址或联系客服，否则奖品在7天后失效 <a href="/wap/index.php?ctl=uc_address&show_prog=1">&nbsp;完善地址</a>
+										  				  				  				  	
+              
+              </span></dd>
+            </dl>
+          </div>
+          <div class="clear"></div>
+        </li>
+        </a>
+		      </ul>
+      <div class="clear"></div>
+    </div>
+</div>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+  		<ul class="menu_box">
+  			<li class="menu_item">
+  				<a href="/wap/index.php?show_prog=1">
+	  				<p><i class="iconfont">&#xe6ee;</i></p>
+	  				<p class="item_txt">首页</p>
+  				</a>
+  			</li>
+			<li class="menu_item">
+				<a href="/wap/index.php?ctl=anno&show_prog=1">
+					<p><i class="iconfont">&#xe6ed;</i></p>
+					<p class="item_txt">最新揭晓</p>
+				</a>
+			</li>
+  			<li class="menu_item">
+  				<a href="/wap/index.php?ctl=cart&show_prog=1">
+	  				<p style="position:relative;" >
+	  					<i class="iconfont">&#xe6ea;</i>
+	  					<div class="nav_cart_num" ></div>
+	  				</p>
+	  				<p class="item_txt">清单</p>
+	  			</a>
+	  		</li>
+  			<li class="menu_item">
+  				<a href="/wap/index.php?ctl=uc_duobao_record&show_prog=1">
+  					<p><i class="iconfont">&#xe6e9;</i></p>
+  					<p class="item_txt">夺宝记录</p>
+  				</a>
+  			</li>
+  			<li class="menu_item">
+  				<a href="/wap/index.php?ctl=user_center&show_prog=1">
+  					<p><i class="iconfont">&#xe6ec;</i></p>
+  					<p class="item_txt">我</p>
+  				</a>
+  			</li>
+		</ul>
+		<a href="/o2onew/wap/biz.php?ctl=more"></a>
+	</div>
+</div>                <div class="gotop" data-com="gotop">
+				<a href="#">
+					<i class="iconfont"></i>
+				</a>
+			</div>
+	</body>
+<html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- Mobile Devices Support @begin -->
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+        name="viewport">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="false" name="twcClient" id="twcClient">
+        <meta name="wap-font-scale" content="no">
+        <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+        <meta content="no-cache" http-equiv="pragma">
+        <meta content="0" http-equiv="expires">
+        <!--允许全屏模式-->
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <!--指定sari的样式-->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta content="telephone=no" name="format-detection" />
+        <!-- Mobile Devices Support @end -->
+        <title>
+            帮助
+        </title>
+        <script type="text/javascript">
+            var APP_ROOT = '';
+            var LOADER_IMG = 'http://1.fanwe.net/wap/Tpl/main/images/loader_img.gif';
+            var LOADING_IMG = 'http://1.fanwe.net/wap/Tpl/main/images/loading.gif';
+            var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+            var PAGE_TYPE = '';
+        </script>
+        <link rel="stylesheet" type="text/css" href="/static/css/help_index.css"
+        />
+        <script type="text/javascript" src="/static/js/help_index.js">
+        </script>
+        <script>
+            /*app 请求时候用到*/
+            $(function() {
+
+                //后退
+                $('#header_back_btn').click(function() {
+                    var Expression = /http(s)?:\/\/?/;
+                    var objExp = new RegExp(Expression);
+                    var backurl = $(this).attr('backurl');
+                    $(this).attr('backurl', '-1');
+
+                    if (objExp.test(backurl) == true) {
+                        location.href = backurl;
+                    } else {
+                        window.history.go( - 1);
+                    }
+                });
+
+            });
+        </script>
+        <script type="text/javascript">
+            //减少移动端触发"Click"事件时300毫秒的时间差
+            window.addEventListener('load',
+            function() {
+                FastClick.attach(document.body);
+            },
+            false);
+        </script>
+    </head>
+    
+    <body>
+        <div class="header">
+            <div class="header-wrap">
+                <div class="c-hd split-line">
+                    <section class="cut_city">
+                        <a id="header_back_btn" backurl='-1'>
+                            <i class="iconfont">
+                                &#xe701;
+                            </i>
+                        </a>
+                    </section>
+                    <section class="logo_img">
+                        帮助
+                    </section>
+                    <section class="cut_city">
+                        <a id="header_back_btn" href="/index/?shop_id={{ shop_id }}">
+                            <i class="iconfont home">
+                                &#xe6ee;
+                            </i>
+                        </a>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        </script>
+        <div class="wrap">
+            <div class="content">
+                <ul class="list">
+                    <li>
+                        <header>
+                            新手指南
+                        </header>
+                        <section>
+                            <ul>
+                                <li>
+                                    <a href="/help/liaojie_duobao/?shop_id={{ shop_id }}">
+                                        了解一元夺宝
+                                        <i class="iconfont">
+                                            &#xe6fa;
+                                        </i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/help/agreement/?shop_id={{ shop_id }}">
+                                        一元夺宝平台服务协议
+                                        <i class="iconfont">
+                                            &#xe6fa;
+                                        </i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/help/common_question/?shop_id={{ shop_id }}">
+                                        常见问题
+                                        <i class="iconfont">
+                                            &#xe6fa;
+                                        </i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </li>
+                    <li>
+                        <header>
+                            商品配送
+                        </header>
+                        <section>
+                            <ul>
+                                <li>
+                                    <a href="/help/shop_delivery/?shop_id={{ shop_id }}">
+                                        商品配送及费用
+                                        <i class="iconfont">
+                                            &#xe6fa;
+                                        </i>
+                                    </a>
+                                </li>
+<!--                                 <li>
+                                    <a href="/wap/index.php?ctl=helps&act=show&data_id=51&show_prog=1">
+                                        配送费用
+                                        <i class="iconfont">
+                                            &#xe6fa;
+                                        </i>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </section>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="gotop" data-com="gotop">
+            <a href="#">
+                <i class="iconfont">
+                    
+                </i>
+            </a>
+        </div>
+    </body>
+    <html>

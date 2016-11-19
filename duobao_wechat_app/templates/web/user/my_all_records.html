@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>夺宝记录</title>	
+<script type="text/javascript">
+	var APP_ROOT = '';
+  	var LOADER_IMG = '/static/gif/loader_img.gif';
+  	var LOADING_IMG = '/static/gif/loading.gif';
+	var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+	var PAGE_TYPE = '';
+	
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/my_over_records.css" />
+<script type="text/javascript" src="/static/js/my_all_records.js"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+		
+	//后退
+	$('#header_back_btn').click(function(){
+		var Expression=/http(s)?:\/\/?/;
+		var objExp=new RegExp(Expression);
+		var backurl = $(this).attr('backurl');
+		$(this).attr('backurl','-1');
+		
+		if(objExp.test(backurl)==true){
+			location.href = backurl;
+		}else{
+			window.history.go(-1);
+		}
+	});
+	
+});
+</script>
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+</head> 
+<body>
+<!-- <div class="header">
+	<div class="header-wrap">
+		<div class="c-hd split-line">
+	        <section class="logo_img">夺宝记录</section>
+	    </div>
+	</div>
+</div>	 -->
+<script type="text/javascript">
+	
+</script>
+
+
+<div class="slider-nav split-line">
+  <ul>
+    <li class="nav-item"><a href="#" class="cur">全部</a></li>
+    <li class="nav-item"><a href="/record/my_processing_records/?shop_id={{ shop_id }}" >进行中</a></li>
+    <li class="nav-item"><a href="/record/my_over_records/?shop_id={{ shop_id }}"  >已揭晓</a></li>
+  </ul>
+</div>
+<div class="m-content">
+<ul class="scroll_bottom_list">
+	{% for item, order_times in all_item_order_list %}
+		{% if item.item_status_id == 1 %}
+			<li class="dblist inprogress">
+			  <div class="dblistimg">
+			    <a href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}">
+			      <img alt="" src="{{ item.merchant.mer_thume_img_oss_link }}" />
+			    </a>
+			  </div>
+			  <div class="dblistmain">
+			    <a class="tit" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}"><span style="color:red">【进行中】</span>
+			      {{ item.merchant.name }}
+			    </a>
+			    <div class="prl">
+			      <div class="lable">
+			        期号&nbsp;:&nbsp;{{ item.item_code }}
+			      </div>
+			      <div class="progressBar">
+			        <span class="bar" style="width:{{ order_times.item_progress }}%">
+			          <i class="color">
+			          </i>
+			        </span>
+			      </div>
+			      <div class="lable fl">
+			        总需&nbsp;:&nbsp;{{ item.merchant.price }}
+			      </div>
+			      <div class="lable fl surplus">
+			        剩余&nbsp;:&nbsp;
+			        <em>
+			          {{ order_times.surplus_order_times }}
+			        </em>
+			      </div>
+			      {% if item.item_status_id == 1%}
+			      <a class="tacked" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}">
+			        追加
+			      </a>
+			      {% elif item.item_status_id == 4 %}
+			      <div class="mline">
+			        等待开奖
+			      </div>
+			      {% elif item.item_status_id == 2%}
+			      <div class="mline">
+			        已经揭晓
+			      </div>
+			      {% endif %}
+			    </div>
+			    <div class="prl">
+			      <div class="partake fl">
+			        本期参与&nbsp;:&nbsp;
+			        <em>
+			          {{order_times.my_order_times}}
+			        </em>
+			        人次
+			      </div>
+			      <a class="lookno fr" href="/record/my_item_tickets/?item_id={{ item.id }}">
+			        查看我的号码
+			      </a>
+			    </div>
+			    <div class="announce">
+			      <div class="mline">
+			        等待开奖
+			      </div>
+			      <div class="mline">
+			        揭晓时间&nbsp;:&nbsp;--
+			      </div>
+			    </div>
+			  </div>
+			</li>
+		{% elif item.item_status_id == 2 %}
+			<li class="dblist finish">
+				<div class="dblistimg">
+				<a href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}"><img alt="" src="{{ item.merchant.mer_thume_img_oss_link }}"/></a>
+				</div>
+				<div class="dblistmain">
+					<a class="tit" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}"><span style="color:red">【已揭晓】</span>{{ item.merchant.name }}</a>
+					<div class="prl">
+						<div class="lable">期号&nbsp;:&nbsp;{{ item.item_code }}</div>
+						<div class="progressBar">
+		                    <span class="bar" style="width:100%"><i class="color"></i></span>
+		                </div>
+						<div class="lable fl">总需&nbsp;:&nbsp;{{ item.merchant.price }}</div>
+						<div class="lable fl surplus">剩余&nbsp;:&nbsp;<em>0</em></div>
+						<a class="tacked" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}">追加</a>
+					</div>
+					<div class="prl">
+						<div class="partake fl">本期我参与&nbsp;:&nbsp;<em>{{ order_times.my_order_times }}</em>人次</div>
+						<a class="lookno fr" href="/record/my_item_tickets/?item_id={{ item.id }}">查看我的号码</a>
+					</div>
+								<div class="announce">				
+						<div class="mline">获得者&nbsp;:&nbsp;<span>{{ order_times.lottery_customer.name }}</span> </div>
+						<!-- <div class="mline">本期参与&nbsp;:&nbsp;<em></em>人次</div> -->
+						<div class="mline">幸运号码&nbsp;:&nbsp;<em>{{ item.winner_code }}</em> </div>
+						<!-- <div class="mline">揭晓时间&nbsp;:&nbsp;2016-04-13 20:42:01</div> -->
+					</div>
+				</div>
+			</li>		
+		{% elif item.item_status_id == 4 %}
+			<li class="dblist finish">
+				<div class="dblistimg">
+				<a href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}"><img alt="" src="{{ item.merchant.mer_thume_img_oss_link }}"/></a>
+				</div>
+				<div class="dblistmain">
+					<a class="tit" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}"><span style="color:blue">【即将开奖】</span>{{ item.merchant.name }}</a>
+					<div class="prl">
+						<div class="lable">期号&nbsp;:&nbsp;{{ item.item_code }}</div>
+						<div class="progressBar">
+		                    <span class="bar" style="width:100%"><i class="color"></i></span>
+		                </div>
+						<div class="lable fl">总需&nbsp;:&nbsp;{{ item.merchant.price }}</div>
+						<div class="lable fl surplus">剩余&nbsp;:&nbsp;<em>0</em></div>
+						<a class="tacked" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}">追加</a>
+					</div>
+					<div class="prl">
+						<div class="partake fl">本期我参与&nbsp;:&nbsp;<em>{{ order_times.my_order_times }}</em>人次</div>
+						<a class="lookno fr" href="/record/my_item_tickets/?item_id={{ item.id }}">查看我的号码</a>
+					</div>
+				</div>
+			</li>	
+		{% else %}
+			<li class="dblist finish">
+				<div class="dblistimg">
+				<a href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}"><img alt="" src="{{ item.merchant.mer_thume_img_oss_link }}"/></a>
+				</div>
+				<div class="dblistmain">
+					<a class="tit" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}"><span style="color:green">【已经结束】</span>{{ item.merchant.name }}</a>
+					<div class="prl">
+						<div class="lable">期号&nbsp;:&nbsp;{{ item.item_code }}</div>
+						<div class="progressBar">
+		                    <span class="bar" style="width:100%"><i class="color"></i></span>
+		                </div>
+						<div class="lable fl">总需&nbsp;:&nbsp;{{ item.merchant.price }}</div>
+						<div class="lable fl surplus">剩余&nbsp;:&nbsp;<em>0</em></div>
+						<a class="tacked" href="/shop/merchant_detail_info/?page_id=1&item_id={{ item.id }}">追加</a>
+					</div>
+					<div class="prl">
+						<div class="partake fl">本期我参与&nbsp;:&nbsp;<em>{{ order_times.my_order_times }}</em>人次</div>
+						<a class="lookno fr" href="/record/my_item_tickets/?item_id={{ item.id }}">查看我的号码</a>
+					</div>
+				</div>
+			</li>							
+		{% endif %}
+	{% endfor %}
+	
+	</ul>
+</div>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+      <ul class="menu_box">
+        <li class="menu_item">
+          <a href="/index/?shop_id={{ shop_id }}">
+            <p><i class="iconfont">&#xe6ee;</i></p>
+            <p class="item_txt">首页</p>
+          </a>
+        </li>
+      <li class="menu_item">
+        <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+          <p><i class="iconfont">&#58964;</i></p>
+          <p class="item_txt">我的代卖</p>
+        </a>
+      </li>
+        <li class="menu_item">
+          <a href="/shop/cart/?shop_id={{ shop_id }}">
+            <p style="position:relative;" >
+              <i class="iconfont">&#xe6ea;</i>
+              {% if cart_good_number > 0 %}
+               <div class="nav_cart_num" id="nav_cart_num" style="display:block;" >{{cart_good_number}}</div>
+              {% else %}
+               <div class="nav_cart_num" id="nav_cart_num" >0</div>
+              {% endif %}
+            </p>
+            <p class="item_txt">清单</p>
+          </a>
+        </li>
+        <li class="menu_item">
+          <a href="/record/my_all_records/?shop_id={{ shop_id }}">
+            <p><i class="iconfont">&#xe6e9;</i></p>
+            <p class="item_txt">夺宝记录</p>
+          </a>
+        </li>
+        <li class="menu_item">
+          <a href="/user/selfinfo/?shop_id={{ shop_id }}">
+            <p><i class="iconfont">&#xe6ec;</i></p>
+            <p class="item_txt">我</p>
+          </a>
+        </li>
+    </ul>
+    
+    {% if next_page_id != -1 %}
+	<div class="fy scroll_bottom_page">
+		&nbsp;
+		<span class='current'> {{ current_page_id }}</span>&nbsp;
+		<a href='/record/my_all_records/?page_id={{ next_page_id }}&shop_id={{ shop_id }}'>&nbsp;{{ next_page_id }}&nbsp;</a>    
+		<a href='/record/my_all_records/?page_id={{ next_page_id }}&shop_id={{ shop_id }}' class='btn2'>下一页</a>	
+	</div>
+	{% endif %}
+    <!-- <a href="/record/my_all_records/?page_id={{ next_page_id }}"></a> -->
+  </div>
+</div>                <div class="gotop" data-com="gotop">
+				<a href="#">
+					<i class="iconfont"></i>
+				</a>
+			</div>
+	</body>
+<html>

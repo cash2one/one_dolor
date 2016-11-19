@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Mobile Devices Support @begin -->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
+    name="viewport">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="false" name="twcClient" id="twcClient">
+    <meta name="wap-font-scale" content="no">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <!--允许全屏模式-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--指定sari的样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="telephone=no" name="format-detection" />
+    <!-- Mobile Devices Support @end -->
+    <title>
+      奖品详情
+    </title>
+    <script type="text/javascript">
+      var APP_ROOT = '';
+      var LOADER_IMG = '/static/gif/loader_img.gif';
+      var LOADING_IMG = '/static/gif/loading.gif';
+      var AJAX_URL = '/record/merchant_add_order/';
+      var PAGE_TYPE = '';
+    </script>
+    <link rel="stylesheet" type="text/css" href="/static/css/merchant/merchant_detail.css"/>
+    <link href="/static/css/common.css" rel="stylesheet" />
+    <link href="/static/css/detail.css" rel="stylesheet" />    
+    <link rel="stylesheet" href="/static/css/weui.min.css"/>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="wxsdk" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>    
+    </script>
+    <script>
+      /*app 请求时候用到*/
+      $(function() {
+
+        //后退
+        $('#header_back_btn').click(function() {
+          var Expression = /http(s)?:\/\/?/;
+          var objExp = new RegExp(Expression);
+          var backurl = $(this).attr('backurl');
+          $(this).attr('backurl', '-1');
+
+          if (objExp.test(backurl) == true) {
+            location.href = backurl;
+          } else {
+            window.history.go( - 1);
+          }
+        });
+
+      });
+    </script>    
+    <script type="text/javascript" src="/static/js/merchant/merchant_detail.js">
+
+    <script type="text/javascript">
+      //减少移动端触发"Click"事件时300毫秒的时间差
+      window.addEventListener('load',
+      function() {
+        FastClick.attach(document.body);
+      },
+      false);
+    </script>
+
+    <script>
+      $(function(){
+        var $cz=$("#selling_proxy");
+        function selling_proxy(){
+          $.get("/user/submit_proxy_selling_request/?merchant_id={{ item.merchant.id }}",{
+            },function(data){
+              if(data){
+                var jsonobj = eval('('+data+')');
+                if(jsonobj.status == 1){
+                  // alert("您已经代卖过此商品了！");
+                  document.getElementById("weui_proxy_selling").style.display="";//隐藏
+                  document.getElementById("weui_selling_comfirm").href = "/shop/merchant_detail_info/?page_id=1&item_id=" + jsonobj.proxy_item_id;
+                }
+                else{
+                  window.location.href="/user/selling_merchant_detail_info/?merchant_id={{ item.merchant.id }}";
+                    
+                }
+              }
+            }
+          );
+        }
+
+        $cz.click(function(){
+          selling_proxy()      
+        });
+
+        });
+    </script>  
+
+<!-- 微信分享接口脚本 -->
+<script>
+
+  $.post("/jssdk/get_merchant_detail_info_jsapi_signature/",{
+        },function(data){
+      if(data){
+        var jsonobj = eval('('+data+')');
+        wx.config({
+            debug: false,
+            appId: jsonobj.appid,
+            timestamp: jsonobj.timestamp,
+            nonceStr: jsonobj.noncestr,
+            signature: jsonobj.signature,
+            jsApiList: [
+              'onMenuShareTimeline',
+              'onMenuShareAppMessage'
+            ]
+        });
+
+      wx.ready(function(){
+        // 新建活动，获取活动链接
+        $.post("/jssdk/share_new_item/?item_id={{ item.id }}",{
+            },function(data){
+          if(data){
+            var jsonobj = eval('('+data+')');
+            // 微信分享朋友圈代码开始
+            wx.onMenuShareTimeline({
+                title: jsonobj.share_desc, // 分享标题
+                link: jsonobj.urllink, // 分享链接
+                imgUrl: jsonobj.share_imgpath, // 分享图标
+                trigger: function (res) {
+
+                },        
+                success: function () { 
+                    // 用户确认分享后执行的回调函数
+                    
+                },
+                cancel: function () { 
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+            // 微信分享朋友圈代码结束
+
+            // 微信分享好友代码开始
+            wx.onMenuShareAppMessage({
+                title: jsonobj.share_title, // 分享标题
+                desc: jsonobj.share_desc, // 分享描述
+                link: jsonobj.urllink, // 分享链接
+                imgUrl: jsonobj.share_imgpath, // 分享图标
+                trigger: function (res) {
+                },            
+                success: function () { 
+                    // 用户确认分享后执行的回调函数
+                },
+                cancel: function () { 
+                    // 用户取消分享后执行的回调函数
+                }
+            });  
+            // 微信分享好友代码结束      
+          }
+        });
+      });
+
+
+
+
+      }
+    }
+  );
+
+</script>
+
+
+<!-- 微信分享接口脚本结束 -->
+
+
+  </head>
+  
+  <body>
+    <div class="header">
+      <div class="header-wrap">
+        <div class="c-hd split-line">
+          <section class="cut_city">
+            <a id="header_back_btn" backurl='-1'>
+              <i class="iconfont">
+                &#xe701;
+              </i>
+            </a>
+          </section>
+          <section class="logo_img">
+            奖品详情
+          </section>
+          <section class="cut_city">
+            <a id="header_back_btn" href="/index/?shop_id={{ shop_id }}">
+              <i class="iconfont home">
+                &#xe6ee;
+              </i>
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var cart_conf_json = {
+        "max_buy": "7280",
+        {% if item.merchant.mer_type_id == 3 %}
+        "min_buy": "10",
+        {% else %}
+        "min_buy": "1",
+        {% endif %}
+        "current_buy": "{{ total_invest_times }}",
+        "residue_count": {{ cart_remain_invest_times }}
+      };
+      var cart_data_json = {
+        "cart_item_num": 0
+      };
+      var to_cart_url = "/shop/cart/?shop_id={{ shop_id }}";
+    </script>
+
+<script type="text/javascript">
+     $(function(){
+      var $cz=$("#weui_selling_cancel");
+      function proxy_dialog(){
+        document.getElementById("weui_proxy_selling").style.display="none";//隐藏
+      }
+
+       $cz.click(function(){
+        proxy_dialog()      
+      });     
+    }); 
+</script>
+
+<div class="weui_dialog_confirm" id="weui_proxy_selling"  style="display:none;">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd"><strong class="weui_dialog_title">提示</strong></div>
+        <div class="weui_dialog_bd">本商品您已经代理过了，点击“确定”跳转到您代理本商品那期的页面，点击“取消”留在本页面。</div>
+        <div class="weui_dialog_ft">
+            <a href="#" class="weui_btn_dialog primary" id="weui_selling_comfirm">确定</a>  
+            <a href="#" class="weui_btn_dialog default" id="weui_selling_cancel">取消</a>
+        </div>
+    </div>
+</div>
+
+    <div class="wrap page_detail">
+      <div class="content">
+        <!--关于商品-->
+        <div class="goods-box goods-abbr">
+          <div class="top">
+            <div class="tenyen">
+            </div>
+            <div class="flash" id="containerFlashAnimation">
+              <section>
+                <div id="banner_box" class="banner_box banner_box_half">
+                  <div class="bd">
+                    <ul>
+                    {% for banner_img in banner_imgs %}
+
+                      <li style="vertical-align: top; width: 100%; display: table-cell;height:8.5rem">
+                        <img src="{{ banner_img.img_oss_link }}"
+                        style="height:8.5rem;margin:0 auto;display:block;" />
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                  <div class="hd">
+                    <ul>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          {% if item.item_status_id == 1 or item.item_status_id == 4 %}
+            <!-- 进行中 -->
+            <div class="good-on">
+              <em class="on">
+                {% if item.item_status_id == 1 %}
+                    进行中
+                {% elif item.item_status_id == 2 %}
+                    已揭晓
+                {% elif item.item_status_id == 4 %}
+                    即将开奖
+                {% endif %}
+              </em>
+              <p>
+              {% if item.item_type.id == 2 %}
+                <span style="color:blue">[本期{{ item.proxy_sale_customer.name }}代卖]</span>
+              {% endif %}
+                {{ item.merchant.name }}
+            
+
+              </p>
+              <div class="progress">
+                <p>
+                  期号：{{ item.item_code }}
+                </p>
+                <progress max="{{ item.merchant.price }}" value="{{total_invest_times}}">
+                </progress>
+                <p class="fl">
+                  总需
+                  <em id="pro-max">
+                    {{ item.merchant.price }}
+                  </em>
+                  人次
+                </p>
+                <p class="fr">
+                  剩余
+                  <span id="pro-rest">
+                    {{ remain_invest_times }}
+                  </span>
+                </p>
+                <div class="clear">
+                </div>
+              </div>
+            </div>
+          {% elif item.item_status_id == 2  or item.item_status_id == 5 or item.item_status_id == 6 %}
+                <!-- 已揭晓 -->
+                <div class="good-announced">
+                     <em class="announced">已揭晓</em>
+                     <p>{{ item.merchant.name }}
+                     </p>
+                     <div class="announced-box">
+                        <div class="announcer">
+                        </div>
+                         <div class="imgbox" style="background:url({{winning_customer.headimg}});background-size: contain">
+                        
+                         </div>
+                         <ul>
+                             <li>
+                                 <p>获奖者：</p>
+                                 <div class="fl">
+                                     <a href="javascript:void(0);">{{ winning_customer.name  }}</a>
+                                     <!-- <em>139.214.157.249(吉林省)</em> -->
+                                 </div>
+                                 <div class="clear"></div>
+                             </li>
+<!--                              <li>
+                                 <p>用户ID：</p>232（唯一不变标识）
+                             </li> -->
+                             <li>
+                                 <p>期 &nbsp;&nbsp;&nbsp;号：</p>
+                                 {{ item.item_code }}                     </li>
+                             <li>
+                                 <p>本期参与：</p>
+                                 <span>{{ item.merchant.price }}</span>人次
+                             </li>
+<!--                              <li>
+                             <p>揭晓时间：</p>
+                             2016-04-28 00:07:04                     </li> -->
+                         </ul>
+                         <div class="clear"></div>
+                         <div class="luckycode">
+                             <div class="luckycode-bg"></div>
+                             <p class="fl">幸运号码：
+                             </p>
+                             <em class="fl">{{ item.winner_code }}</em>
+                             <a href="/record/calculate_winning_detail/?shop_id={{shop_id}}&item_id={{item.id}}">计算详情</a>
+                         </div>
+                     </div>
+                </div>
+                <!-- 已揭晓 -->
+
+          {% endif %}
+
+
+
+          <div class="joined">
+            <p>
+              您参与了：
+              <span>
+                {{current_customer_order_times}}
+              </span>
+              人次
+            </p>
+            <dl>
+              <dt>
+                夺宝号码：
+              </dt>
+              <br>
+              {% for lottery_ticket in lottery_tickets %}
+                <dd>
+                  {{ lottery_ticket.ticket_no }}
+                </dd>              
+              {% endfor %}
+
+            </dl>
+            <div class="clear">
+            </div>
+          </div>
+          <!-- 参与信息 -->
+        </div>
+        <div class="infomation">
+          <ul>
+<!--             <li>
+              <a href="/wap/index.php?ctl=duobao&act=more&data_id=100000008&show_prog=1">
+                图文详情
+                <i class="iconfont">
+                  &#xe6fa;
+                </i>
+                <span class="fr">
+                  建议在wifi下查看
+                </span>
+              </a>
+            </li>
+            <div class="info-border">
+            </div>
+            <li>
+              <a href="/wap/index.php?ctl=duobao&act=duobao_record&data_id=313&show_prog=1">
+                往期揭晓
+                <i class="iconfont">
+                  &#xe6fa;
+                </i>
+              </a>
+            </li> -->
+            <!--<div class="info-border"></div>
+            <li><a href="#">晒单分享<i class="iconfont">&#xe6fa;</i></a></li>-->
+          </ul>
+        </div>
+        <!-- 信息 -->
+        <div class="join-data">
+          <div class="all-data split-line">
+            所有参与记录
+            <span class="fr">
+<!--               (
+              <time>
+                2016-04-08 09:36:40
+              </time>
+              开始) -->
+            </span>
+          </div>
+          <dl>
+            <dt>
+<!--               <time>
+                2016-04-08 09:36:40
+              </time> -->
+
+            </dt>
+
+            <div class="scroll_bottom_list" style="padding-left: 18px;" style="margin-top: -20px;">
+                <ul class="m-detail-record-list" data-pro="entry" >
+
+                    {% for order ,orderinfo in orders %}
+                    <li id="pro-view-4">
+
+                        <div class="f-clear">
+                            <div class="avatar">
+                                <a href="#" data-invoke="userCenter?cid=77179019">
+                                    <img width="35" height="35" onerror="this.src='/static/img/40.jpeg'"
+                                    src="{{ order.customer.headimg }}">
+                                </a>
+                            </div>
+                            <div class="text">
+                                <p class="f-breakword">
+                                    <a href="#" data-invoke="userCenter?cid=77179019">
+                                        {{ order.customer.name }}
+                                    </a>
+                                    <span class="address">
+                                       <!--  ( IP：117.136.40.183) -->
+                                    </span>
+                                </p>
+                                <p>
+                                    <span class="num">
+                                        参与了
+                                        <span class="txt-red">
+                                            {{ orderinfo.order_times }}
+                                        </span>
+                                        人次
+                                    </span>
+                                     {{ orderinfo.create_time_str }}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>                
+            </div>
+
+          </dl>
+          <div class="fy scroll_bottom_page">
+            &nbsp;
+            <span class='current'>
+              {{ page_id }}
+            </span>
+            &nbsp;
+            {% if next_page_id == -1%}
+
+            {% else %}
+                <a href='/shop/merchant_detail_info/?page_id={{ next_page_id }}&item_id={{ item.id }}'>
+                  &nbsp;{{ next_page_id }}&nbsp;
+                </a>
+                <a href='/shop/merchant_detail_info/?page_id={{ next_page_id }}&item_id={{ item.id }}'
+                class='btn2'>
+                  下一页
+                </a>              
+            {% endif %}
+          </div>
+        </div>
+        <div class="joinin">
+          <div class="joinin-box">
+            <input type="hidden" name="data_id" value="{{ item.id }}" />
+            <a class="jionin-in joinin-btn" href="javascript:void(0);" data-type="1" style="
+              background: #db3752;
+              color: #fff;
+          ">
+              立即参与
+            </a>
+            {% if proxy_selling == True %}
+              <a class="selling-proxy" id="selling_proxy" href="#" style="
+                border: 1px solid #db3752;
+                position: relative;
+                color：#db3752: inherit;
+            ">
+                代卖此商品
+              </a>
+            {% else %}
+              <a class="no-selling-proxy" id="no_selling_proxy" href="#" style="
+                border: 1px solid #db3752;
+                position: relative;
+                color：#db3752: inherit;
+            ">
+                此商品不可代卖
+              </a>            
+            {% endif %}
+            <a href="#" class="iconfont-box">
+              <i class="iconfont">
+
+                <!-- &#xe658; -->
+              </i>
+<!--               {% if cart_total_number == 0 %}
+                  <div class="goods-in-list" style="display: none;">
+                    {{cart_total_number}}
+                  </div>
+              {% else %}
+                  <div class="goods-in-list">
+                    {{cart_total_number}}
+                  </div>              
+              {% endif %}   -->          
+
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="am-layer">
+      <div class="am-layer-title">
+        <span class="title-txt">
+          人次期数选择
+        </span>
+        <div class="cencel-btn iconfont">
+          &#xe608;
+        </div>
+      </div>
+      <div class="am-layer-con">
+        <div class="item-box">
+          <div class="item-title">
+            参与人次
+          </div>
+          <div class="item-con">
+            <div class="buy-num-box">
+              <a class="iconfont reduce-btn count-btn">
+                &#xe6d3;
+              </a>
+            {% if item.merchant.mer_type_id == 3 %}
+                <input type="text" value="10" name="buy_num" class="buy-num-input" />
+            {% else %}
+                <input type="text" value="1" name="buy_num" class="buy-num-input" />
+            {% endif %}              
+              
+              <a class="iconfont plus-btn count-btn">
+                &#xe6d1;
+              </a>
+            </div>
+            <div class="blank5">
+            </div>
+            <div class="min-buy-box">
+              <em>
+                      {% if item.merchant.mer_type_id == 3 %}
+                        参与人次需是10的倍数
+                        {% else %}
+                        参与人次需是1的倍数
+                        {% endif %}
+                
+              </em>
+            </div>
+          </div>
+        </div>
+        <div class="item-floot sub-btn-list">
+          <div class="sub-btn-1 f-btn-box">
+            <a class="add_cart_item" href="javascript:void(0);" data-type="1">
+              加入购物车
+            </a>
+          </div>
+<!--           <div class="sub-btn-2 f-btn-box">
+            <a class="add_cart_item" href="http://www.baidu.com/" data-type="2">
+              代卖此商品
+            </a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="blank50">
+    </div>
+  </body>
+  <html>

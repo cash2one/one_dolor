@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />   
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta name="wap-font-scale" content="no">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>会员中心</title> 
+<script type="text/javascript">
+    var APP_ROOT = '';
+    var LOADER_IMG = '/static/gif/loader_img.gif';
+    var LOADING_IMG = '/static/gif/loading.gif';
+    var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+    var PAGE_TYPE = '';
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/self.css" />
+<script type="text/javascript" src="/static/js/customer_service.js"></script>
+</head> 
+<body>
+<script type="text/javascript">
+    //减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+<!-- <div class="header">
+  <div class="header-wrap">
+  <div class="c-hd" style="background:blue;color:#fff">
+        <section class="cut_city">
+              <a id="header_back_btn" backurl='-1'><i class="iconfont" style="color: #fff">&#xe60b;</i></a>
+      </section>
+        <section class="logo_img">商店信息</section>
+        <section class="cut_city"></section>
+     </div>
+   </div>
+</div>   -->
+
+<script type="text/javascript">
+    
+</script>
+
+
+
+<div class="wrap">
+<div class="content">
+<!--用户信息部分-->
+      <div class="goods_abbr">
+          <a href="/user/imporve_personal_info/">
+            <div class="person_account">
+                 <div class="account_info">
+                      <div class="pic">
+                          <img src="{{ customer.headimg }}" http://1.fanwe.cn/public/avatar/noavatar_big.gif width="100%" height="100%">
+                      </div>
+                      <div class="name">
+                          <h1>{{ customer.nickname }}</h1>
+                      <p>积分：<span>{{ account.points }}</span></p>
+                      </div>
+                 </div>
+            </div>
+          </a>
+          <div class="uc-money-box">
+              <div class="uc-money-item">夺宝币：<font class="money-font">{{ account.balance_coins }}</font></div>
+              <div class="uc-incharge-box"><button class="incharge-btn"><a href="/user/pay_coins/?shop_id={{ shop_id }}" >充值</a></botton></div>
+          </div>
+      </div>
+<!--end 用户信息部分--><!--副导航-->
+
+
+
+    <div class="uc-list-view split-line-top split-line">
+        <ul class="uc-list-v-items">
+            <li class="uc-v-item">
+                <a href="#">
+                    <div class="sub-uc-v-item">
+                       <i class="left-icon iconfont font-light-green">&#59115;</i>
+                        <div class="flex-box split-line">
+                        <span>联系电话：<a href="tel:{{ shop.contract_mobile }}"><em class="msg_notice">{{ shop.contract_mobile }}</em></a></span>
+                        <!-- <i class="right-jt iconfont">&#xe6fa;</i> -->
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="uc-v-item">
+                <a href="#">
+                    <div class="sub-uc-v-item">
+                        <i class="left-icon iconfont font-light-red">&#58894;</i>
+                        <div class="flex-box split-line">
+                        <span>联系人：{{ shop.contract_name }}</span>
+                        <!-- <i class="right-jt iconfont">&#xe6fa;</i> -->
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+             <li class="uc-v-item">
+                     <a href="#">
+                             <div class="sub-uc-v-item">
+                                 <i class="left-icon iconfont font-light-blue">&#xe6cd;</i>
+                                 <div class="flex-box">             
+                                 <span>商家地址：{{ shop.addr }}</span>
+                             <!-- <i class="right-jt iconfont">&#xe6fa;</i> -->
+                             </div>
+                             </div>
+                         </a>
+             </li>   
+        </ul>
+    </div>   
+
+
+</div>
+</div>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+        <ul class="menu_box">
+            <li class="menu_item">
+                <a href="/index/?shop_id={{ shop_id }}">
+                    <p><i class="iconfont">&#xe6ee;</i></p>
+                    <p class="item_txt">首页</p>
+                </a>
+            </li>
+          <li class="menu_item">
+            <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+              <p><i class="iconfont">&#58964;</i></p>
+              <p class="item_txt">我的代卖</p>
+            </a>
+          </li>
+            <li class="menu_item">
+          <a href="/shop/cart/?shop_id={{ shop_id }}">
+            <p style="position:relative;" >
+              <i class="iconfont">&#xe6ea;</i>
+              {% if cart_good_number > 0 %}
+               <div class="nav_cart_num" id="nav_cart_num" style="display:block;" >{{cart_good_number}}</div>
+              {% else %}
+               <div class="nav_cart_num" id="nav_cart_num" >0</div>
+              {% endif %}
+            </p>
+            <p class="item_txt">清单</p>
+          </a>
+            </li>
+            <li class="menu_item">
+                <a href="/record/my_all_records/?shop_id={{ shop_id }}">
+                    <p><i class="iconfont">&#xe6e9;</i></p>
+                    <p class="item_txt">夺宝记录</p>
+                </a>
+            </li>
+            <li class="menu_item">
+                <a href="/user/selfinfo/?shop_id={{ shop_id }}">
+                    <p><i class="iconfont">&#xe6ec;</i></p>
+                    <p class="item_txt">我</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>                <div class="gotop" data-com="gotop">
+                <a href="#">
+                    <i class="iconfont"></i>
+                </a>
+            </div>
+    </body>
+<html>

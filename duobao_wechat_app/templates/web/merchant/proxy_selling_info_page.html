@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="/static/css/weui.min.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta http-equiv="refresh" content="411;url=/record/my_all_records/" /> 
+<title>跳转提示</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="wxsdk" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<style type="text/css">
+*{ padding: 0; margin: 0; }
+body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+.system-message{ padding:0 0 48px;margin:60px auto;width:90%;}
+.system-message h3{ font-size: 50px; font-weight: normal; line-height: 120px; margin-bottom: 12px;border:1px solid #ccc}
+.system-message .jump{ padding-top: 10px}
+.system-message .jump a{ color: #333;}
+.system-message .success,.system-message .error{ line-height: 1.8em; font-size: 23px ;text-align: center;}
+.system-message .detail{ font-size: 12px; line-height: 20px; margin-top: 12px; display:none}
+</style>
+<script>
+  $(function(){
+    var $cz=$("#proxy_selling");
+    function selling_proxy(){
+		document.getElementById("weui_proxy_selling").style.display="none";//隐藏
+    }
+
+    $cz.click(function(){
+      selling_proxy()      
+    });
+
+    });
+</script> 
+
+<!-- 微信分享接口脚本 -->
+<script>
+
+  $.post("/jssdk/get_proxy_selling_jsapi_signature/",{
+        },function(data){
+      if(data){
+        var jsonobj = eval('('+data+')');
+        wx.config({
+            debug: false,
+            appId: jsonobj.appid,
+            timestamp: jsonobj.timestamp,
+            nonceStr: jsonobj.noncestr,
+            signature: jsonobj.signature,
+            jsApiList: [
+              'onMenuShareTimeline',
+              'onMenuShareAppMessage'
+            ]
+        });
+
+		  wx.ready(function(){
+		    // 新建活动，获取活动链接
+		    $.post("/jssdk/share_new_item/?item_id={{ item.id }}",{
+		        },function(data){
+		      if(data){
+		        var jsonobj = eval('('+data+')');
+		        // 微信分享朋友圈代码开始
+		        wx.onMenuShareTimeline({
+		            title: jsonobj.share_desc, // 分享标题
+		            link: jsonobj.urllink, // 分享链接
+		            imgUrl: jsonobj.share_imgpath, // 分享图标
+		            trigger: function (res) {
+
+		            },        
+		            success: function () { 
+		                // 用户确认分享后执行的回调函数
+		                
+		            },
+		            cancel: function () { 
+		                // 用户取消分享后执行的回调函数
+		            }
+		        });
+		        // 微信分享朋友圈代码结束
+
+		        // 微信分享好友代码开始
+		        wx.onMenuShareAppMessage({
+		            title: jsonobj.share_title, // 分享标题
+		            desc: jsonobj.share_desc, // 分享描述
+		            link: jsonobj.urllink, // 分享链接
+		            imgUrl: jsonobj.share_imgpath, // 分享图标
+		            trigger: function (res) {
+		            },            
+		            success: function () { 
+		                // 用户确认分享后执行的回调函数
+		            },
+		            cancel: function () { 
+		                // 用户取消分享后执行的回调函数
+		            }
+		        });  
+		        // 微信分享好友代码结束      
+		      }
+		    });
+		  });
+
+
+
+
+      }
+    }
+  );
+
+</script>
+
+
+<!-- 微信分享接口脚本结束 -->
+
+</head>
+<body>
+
+  <div class="weui_dialog_alert" id="weui_proxy_selling">
+      <div class="weui_mask"></div>
+      <div class="weui_dialog">
+          <div class="weui_dialog_hd"><strong class="weui_dialog_title">代卖成功！</strong></div>
+          <div class="weui_dialog_bd" style="text-align:left;">完成后您可获得<span>{{ item.merchant.commission_price }}元</span>佣金！您可通过
+          <ul id="share_type">
+          	<strong><li>在本页微信分享</li></strong>
+          	<strong><li>二维码分享</li></strong>
+          	<strong><li>进入“代卖商品详情”微信分享</li></strong>
+          </ul>
+          三种方式分享。
+          </div>
+          <div class="weui_dialog_ft">
+              <a href="#" id="proxy_selling" class="weui_btn_dialog primary">确定</a>
+          </div>
+      </div>
+  </div>
+
+
+<div class="system-message">
+
+
+	<div class="weui_msg">
+		<article class="weui_article" style="margin-top: -60px;">
+		    <h1>您的代卖商品二维码</h1>
+
+		    <!-- <h1> <span style="color:red">关注我们，跟踪您代卖商品的进度</span></h1> -->
+		</article>	
+		<div class="qrimg" style="margin-top: -20px;">
+		<center><img src="{{ qr_code_url }}" wdith="200" height="200"></center>
+		</div>
+	    <!-- <div style="text-align:center;margin-top:10px;"><img src="{{ qr_code_url }}"   /></div> -->
+	    <div class="weui_opr_area" style="margin-top: 30px;">
+	        <p class="weui_btn_area">
+	            <a href="/shop/merchant_detail_info/?item_id={{ item_id }}" class="weui_btn weui_btn_primary">您的代卖商品详情</a>
+	            <a href="http://mp.weixin.qq.com/s?__biz=MzI0NzE3NTUwMA==&mid=402871951&idx=1&sn=a9cad47323c5dd1bb37112d5e28d2651&scene=0#wechat_redirect" class="weui_btn weui_btn_warn">关注我们,跟踪代卖进度</a>
+	            <!-- <a href="#" class="weui_btn weui_btn_default">取消</a> -->				
+	        </p>
+	    </div>
+	    <div class="weui_extra_area">
+	        <a href="#">桔叶科技提供技术支持</a>
+	    </div>
+	</div>
+	<center>
+		<div class="jump">
+				<b id="wait">30</b>秒后页面自动 
+
+			<a id="href" href="/shop/merchant_detail_info/?item_id={{ item_id }}">跳转到代卖商品详情</a> 
+			
+			<script type="text/javascript">
+				(function(){
+				var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+				var interval = setInterval(function(){
+					var time = --wait.innerHTML;
+					if(time == 0) {
+						location.href = href;
+						clearInterval(interval);
+					};
+				}, 1000);
+				})();
+			</script>
+		</div>
+	</center>
+</div>
+</body>
+</html>

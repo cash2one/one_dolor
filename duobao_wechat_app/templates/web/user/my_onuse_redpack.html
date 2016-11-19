@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>我的红包</title>	
+<script type="text/javascript">
+	var APP_ROOT = '';
+	var LOADER_IMG = 'http://1.fanwe.cn/wap/Tpl/main/images/loader_img.gif';
+	var LOADING_IMG = 'http://1.fanwe.cn/wap/Tpl/main/images/loading.gif';
+	var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+	var PAGE_TYPE = '';
+	
+</script>
+<link rel="stylesheet" type="text/css" href="http://1.fanwe.cn/public/runtime/statics/wap/40b5eb480f121943918585909b694c68.css?v=1.4.1046" />
+<script type="text/javascript" src="http://1.fanwe.cn/public/runtime/statics/wap/f52f6e5162f76691919262d13e96debd.js?v=1.4.1046"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+		
+	//后退
+	$('#header_back_btn').click(function(){
+		var Expression=/http(s)?:\/\/?/;
+		var objExp=new RegExp(Expression);
+		var backurl = $(this).attr('backurl');
+		$(this).attr('backurl','-1');
+		
+		if(objExp.test(backurl)==true){
+			location.href = backurl;
+		}else{
+			window.history.go(-1);
+		}
+	});
+	
+});
+</script>
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+</head> 
+<body>
+<div class="header">
+	<div class="header-wrap">
+	<div class="c-hd split-line">
+        <section class="cut_city">
+              <a id="header_back_btn" backurl='-1'><i class="iconfont">&#xe60b;</i></a>
+	    </section>
+        <section class="logo_img">我的红包</section>
+        <span class="title-blank"></span>
+     </div>
+	 </div>
+</div>	
+<script type="text/javascript">
+	
+</script>
+
+<script>
+var ajax_url  = '/wap/index.php?ctl=uc_ecv&show_prog=1';
+var n_valid = '0';
+</script>
+<a href="/wap/index.php?ctl=uc_ecv&act=exchange&show_prog=1" class="exchange">红包兑换</a>
+<div class="wrap">
+<nav class="ecv_criteria_tab">
+   <ul class="ecv_tab_box" >
+       <li class="this"><a href="/wap/index.php?ctl=uc_ecv&show_prog=1">可使用</a></li>
+   	     <li class=""><a href="/wap/index.php?ctl=uc_ecv&n_valid=1&show_prog=1">已失效</a></li>					   	     
+   </ul>
+</nav>
+    <div class="lose">
+    <div class="bgbox">
+    </div>
+    <h1>您还没有红包</h1>
+    <a href="/wap/index.php?show_prog=1"><button>立即夺宝</button></a>
+  </div>
+
+     

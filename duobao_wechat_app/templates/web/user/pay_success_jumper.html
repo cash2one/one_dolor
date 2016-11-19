@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="/static/css/weui.min.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<!-- apple devices fullscreen -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta http-equiv="refresh" content="100;url=/record/my_all_records/" /> 
+<title>跳转提示</title>
+<style type="text/css">
+*{ padding: 0; margin: 0; }
+body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+.system-message{ padding:0 0 48px;margin:60px auto;width:90%;}
+.system-message h3{ font-size: 50px; font-weight: normal; line-height: 120px; margin-bottom: 12px;border:1px solid #ccc}
+.system-message .jump{ padding-top: 10px}
+.system-message .jump a{ color: #333;}
+.system-message .success,.system-message .error{ line-height: 1.8em; font-size: 23px ;text-align: center;}
+.system-message .detail{ font-size: 12px; line-height: 20px; margin-top: 12px; display:none}
+</style>
+</head>
+<body>
+<div class="system-message">
+	<div class="weui_msg" style="margin-top: -70px;">
+	    <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
+	    <div class="weui_text_area">
+	        <h2 class="weui_msg_title">夺宝成功！关注我们即可领取更多夺宝币，参与更多活动</h2>
+<!-- 	        <p class="weui_msg_desc">参与更多红包活动，请关注桔叶科技</p>
+			<div style="">
+				</br>
+				<center><img src="/static/images/jy_qrcode.jpg" wdith="200" height="200"></center>
+			</div>	  -->       
+	    </div>
+	    <div class="weui_opr_area" style="margin-top: 70px;">
+	        <p class="weui_btn_area">
+	            <a href="/record/my_all_records/?shop_id={{ shop_id }}" class="weui_btn weui_btn_primary">返回夺宝记录</a>
+	            <a href="http://mp.weixin.qq.com/s?__biz=MzI0NzE3NTUwMA==&mid=402871951&idx=1&sn=a9cad47323c5dd1bb37112d5e28d2651&scene=0#wechat_redirect" class="weui_btn weui_btn_warn">关注我们</a>
+	            <!-- <a href="#" class="weui_btn weui_btn_default">取消</a> -->
+
+	            				
+	        </p>
+	    </div>
+<!-- 	    <div class="weui_extra_area">
+	        <a href="#">桔叶科技提供技术支持</a>
+	    </div> -->
+	</div>
+	<center>
+		<div class="jump">
+				<b id="wait">15</b>秒后页面自动 
+			<a id="href" href="/record/my_all_records/?shop_id={{ shop_id }}">跳转到夺宝记录</a> 
+			
+			<script type="text/javascript">
+				(function(){
+				var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+				var interval = setInterval(function(){
+					var time = --wait.innerHTML;
+					if(time == 0) {
+						location.href = href;
+						clearInterval(interval);
+					};
+				}, 1000);
+				})();
+			</script>
+		</div>
+	</center>
+</div>
+</body>
+</html>

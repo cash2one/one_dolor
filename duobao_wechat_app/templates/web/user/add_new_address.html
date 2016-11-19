@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="wap-font-scale" content="no">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>桔叶夺宝-地址管理</title>	
+<script type="text/javascript">
+	var APP_ROOT = '';
+	var LOADER_IMG = '/static/gif/loading_img.gif';
+	var LOADING_IMG = '/static/gif/loading.gif';
+	var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+	var PAGE_TYPE = '';
+	
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/add_new_address.css" />
+<script type="text/javascript" src="/static/js/add_new_address.js"></script>
+<script>
+/*app 请求时候用到*/
+$(function(){
+		
+	//后退
+	$('#header_back_btn').click(function(){
+		var Expression=/http(s)?:\/\/?/;
+		var objExp=new RegExp(Expression);
+		var backurl = $(this).attr('backurl');
+		$(this).attr('backurl','-1');
+		
+		if(objExp.test(backurl)==true){
+			location.href = backurl;
+		}else{
+			window.history.go(-1);
+		}
+	});
+	
+});
+</script>
+<script type="text/javascript">
+	//减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+</head> 
+<body>
+<div class="header">
+	<div class="header-wrap">
+	<div class="c-hd split-line">
+        <section class="cut_city">
+              <a id="header_back_btn" backurl='-1'><i class="iconfont">&#xe701;</i></a>
+	    </section>
+        <section class="logo_img">桔叶夺宝-地址管理</section>
+        <section class="cut_city">
+                      <a id="header_back_btn" href="/index/?shop_id={{ shop_id }}"><i class="iconfont home">&#xe6ee;</i></a>
+        </section>
+     </div>
+	 </div>
+</div>	
+<script type="text/javascript">
+	
+</script>
+
+<script type="text/javascript" src="/static/js/region.js"></script>	
+<div class="wrap">
+	<div class="content">
+					<form name="my_address" method="post" action="/user/submit_address/?shop_id={{ shop_id }}">
+						<input type="hidden" value="" name="region_id"  />	
+                        <input type="hidden" name="post_xpoint" id="post_xpoint" value=""/>
+                        <input type="hidden" name="post_ypoint" id="post_ypoint" value=""/>
+						<dl class="address_input">
+							<dt>收<em></em>件<em></em>人</dt>
+							<dd>
+								<input class="ui-textbox" value="" name="consignee" holder="请输入收货人姓名" />								
+							</dd>
+
+							<dt>省<em></em>市<em></em>区</dt>
+							<dd class="select-address">
+								
+								<div class="p_c_r" style="display:none;">	
+								<select name="region_lv1" class="region_select">
+                                	<option value="1">中国</option>
+<!--								    <option value="0">=请选择=</option>
+																		<option  value=""></option>
+									-->
+							  	</select>
+							  	</div>								
+								
+								<div class="p_c_r">				
+									<select name="region_lv2" class="region_select" >
+										<option value="0">=请选择=</option>
+																				<option  value="2">北京</option>
+																				<option  value="3">安徽</option>
+																				<option  value="4">福建</option>
+																				<option  value="5">甘肃</option>
+																				<option  value="6">广东</option>
+																				<option  value="7">广西</option>
+																				<option  value="8">贵州</option>
+																				<option  value="9">海南</option>
+																				<option  value="10">河北</option>
+																				<option  value="11">河南</option>
+																				<option  value="12">黑龙江</option>
+																				<option  value="13">湖北</option>
+																				<option  value="14">湖南</option>
+																				<option  value="15">吉林</option>
+																				<option  value="16">江苏</option>
+																				<option  value="17">江西</option>
+																				<option  value="18">辽宁</option>
+																				<option  value="19">内蒙古</option>
+																				<option  value="20">宁夏</option>
+																				<option  value="21">青海</option>
+																				<option  value="22">山东</option>
+																				<option  value="23">山西</option>
+																				<option  value="24">陕西</option>
+																				<option  value="25">上海</option>
+																				<option  value="26">四川</option>
+																				<option  value="27">天津</option>
+																				<option  value="28">西藏</option>
+																				<option  value="29">新疆</option>
+																				<option  value="30">云南</option>
+																				<option  value="31">浙江</option>
+																				<option  value="32">重庆</option>
+																				<option  value="33">香港</option>
+																				<option  value="34">澳门</option>
+																				<option  value="35">台湾</option>
+																			  </select>
+								</div>
+								<div class="p_c_r">					
+									<select name="region_lv3" class="region_select" >
+										<option value="0">=请选择=</option>		
+																				<option  value=""></option>
+																			 </select>
+								 </div>
+								<div class="p_c_r">				
+									<select name="region_lv4" class="region_select" >
+										<option value="0">=请选择=</option>
+																				<option  value=""></option>
+																			  </select>
+								  </div>
+
+							</dd>
+
+							<dt>详细地址</dt>
+							<dd>
+								<input  name="address" value="" class="ui-textbox" holder="请输入收货地址" />
+								
+							</dd>							
+							
+							<dt>邮<em></em><em></em><em></em><em></em>编</dt>
+							<dd>
+								<input  name="zip" value="" class="ui-textbox" holder="请输入邮编" />
+								
+							</dd>
+
+							<dt>手<em></em><em></em><em></em><em></em>机</dt>
+							<dd>
+								<input  name="mobile" value="" class="ui-textbox" holder="请输入收货人手机" />
+								
+							</dd>
+							<dd>
+							
+							</dd>
+						</dl>	
+							
+                        <div style="padding: 0 10px;"><button type="button" value="确定"   name="commit"  id="sub_address" class="sub_address"  >确定</button></div>					
+
+
+
+				</form>
+	</div>
+</div>
+                <div class="gotop" data-com="gotop">
+				<a href="#">
+					<i class="iconfont"></i>
+				</a>
+			</div>
+	</body>
+<html>

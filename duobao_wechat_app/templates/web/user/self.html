@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />   
+<!-- Mobile Devices Support @begin -->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="false" name="twcClient" id="twcClient">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta name="wap-font-scale" content="no">
+<!--允许全屏模式-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--指定sari的样式-->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="telephone=no" name="format-detection" />
+<!-- Mobile Devices Support @end -->
+<title>会员中心</title> 
+<script type="text/javascript">
+    var APP_ROOT = '';
+    var LOADER_IMG = '/static/gif/loader_img.gif';
+    var LOADING_IMG = '/static/gif/loading.gif';
+    var AJAX_URL = '/wap/index.php?ctl=ajax&show_prog=1';
+    var PAGE_TYPE = '';
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/self.css" />
+<script type="text/javascript" src="/static/js/self.js"></script>
+</head> 
+<body>
+<script type="text/javascript">
+    //减少移动端触发"Click"事件时300毫秒的时间差
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
+</script>
+<script type="text/javascript">
+    
+</script>
+
+
+
+<div class="wrap">
+<div class="content">
+<!--用户信息部分-->
+                    <div class="goods_abbr">
+                        <a href="/user/imporve_personal_info/">
+                          <div class="person_account">
+                               <div class="account_info">
+                                    <div class="pic">
+                                        <img src="{{ customer.headimg }}" http://1.fanwe.cn/public/avatar/noavatar_big.gif width="100%" height="100%">
+                                    </div>
+                                    <div class="name">
+                                        <h1>{{ customer.nickname }}</h1>
+                                    <p>积分：<span>{{ account.points }}</span><em class="msg_count">  （积分商城即将开放）</em></p>
+                                    </div>
+                               </div>
+                          </div>
+                        </a>
+                        <div class="uc-money-box">
+                            <div class="uc-money-item">夺宝币：<font class="money-font">{{ account.balance_coins }}</font></div>
+                            <div class="uc-incharge-box"><button class="incharge-btn"><a href="/user/pay_coins/?shop_id={{ shop_id }}" >充值</a></botton></div>
+                        </div>
+                    </div>
+<!--end 用户信息部分--><!--副导航-->
+    <div class="uc-sub-nav split-line">
+        <ul class="uc-nav-list">
+            <li class="uc-nav-item">
+                <a href="/record/my_processing_records/?shop_id={{ shop_id }}">
+                    <div class="iconfont">&#xe6e0;</div>
+                    <div class="nav-title">正在进行</div>
+                </a>
+            </li>
+            <li class="uc-nav-item">
+                <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+                    <div class="iconfont">&#xe6f6;</div>
+                    <div class="nav-title">我的代卖店</div>
+                </a>
+            </li>
+            <li class="uc-nav-item">
+                <a href="/record/my_winning_records/?shop_id={{ shop_id }}">
+                    <div class="iconfont">&#xe6fe;</div>
+                    <div class="nav-title">中奖记录</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--end 副导航-->
+
+    <!--
+    菜单连接
+    1.全部夺宝记录
+    2.中奖记录
+    3.配送地址
+    4.我的红包
+    5.我的消息
+    6.我的邀请
+    7.资金明细
+    8。晒单
+    9.设置
+    -->
+
+<!-- 
+1、我的代卖店铺
+ -->
+
+<!--     <div class="uc-list-view split-line-top split-line">
+        <ul class="uc-list-v-items">
+                <li class="uc-v-item">
+                    <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+                        <div class="sub-uc-v-item">
+                            <i class="left-icon iconfont font-green">&#xe6ff;</i>
+                                <span>我的店铺</span>
+                            <i class="right-jt iconfont">&#xe6fa;</i>
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </div>    -->
+
+<!-- 
+2、我的中奖记录
+3、我的消息
+4、我的配送地址
+ -->
+
+    <div class="uc-list-view split-line-top split-line">
+        <ul class="uc-list-v-items">
+            <li class="uc-v-item">
+                <a href="/record/my_all_records/?shop_id={{ shop_id }}">
+                    <div class="sub-uc-v-item">
+                       <i class="left-icon iconfont font-light-blue">&#xe6e9;</i>
+                        <div class="flex-box split-line">
+                        <span>夺宝记录</span>
+                        <i class="right-jt iconfont">&#xe6fa;</i>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="uc-v-item">
+                <a href="/user/my_message/?shop_id={{ shop_id }}">
+                    <div class="sub-uc-v-item">
+                        <i class="left-icon iconfont font-light-gray">&#xe6fb;</i>
+                        <div class="flex-box split-line">
+                        <span>我的消息
+                            {% if my_messages_length > 0 %}
+                            <em class="msg_notice">（{{ my_messages_length }}条未读）</em>
+                            {% endif %}
+                        </span>
+                        <i class="right-jt iconfont">&#xe6fa;</i>
+                        </div>
+                    </div>
+                </a>
+            </li>
+             <li class="uc-v-item">
+                     <a href="/user/recieve_address/?shop_id={{ shop_id }}">
+                             <div class="sub-uc-v-item">
+                                 <i class="left-icon iconfont font-light-green">&#xe6cd;</i>
+                                 <div class="flex-box ">             
+                                 <span>配送地址管理</span>
+                             <i class="right-jt iconfont">&#xe6fa;</i>
+                             </div>
+                             </div>
+                         </a>
+             </li>   
+        </ul>
+    </div>   
+
+    <div class="uc-list-view split-line-top split-line">
+        <ul class="uc-list-v-items">
+            <li class="uc-v-item">
+                <a href="/user/self_customer/?shop_id={{ shop_id }}">
+                    <div class="sub-uc-v-item">
+                        <i class="left-icon iconfont">&#xe6cf;</i>
+                        <div class="flex-box split-line">
+                        <span>本店客服信息</span>
+                        <i class="right-jt iconfont">&#xe6fa;</i>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="uc-v-item">
+                <a href="http://mp.weixin.qq.com/s?__biz=MzI0NzE3NTUwMA==&mid=402871951&idx=1&sn=a9cad47323c5dd1bb37112d5e28d2651&scene=0#wechat_redirect">
+                    <div class="sub-uc-v-item">
+                        <i class="left-icon iconfont font-violet">&#xe6e1;</i>
+                        <div class="flex-box split-line">
+                        <span>关注我们<em class="msg_count">（实时获取中奖信息）</em></span>
+                        <i class="right-jt iconfont">&#xe6fa;</i>
+                        </div>
+                    </div>
+                </a>
+            </li>
+             <li class="uc-v-item">
+                     <a href="http://mp.weixin.qq.com/s?__biz=MzI0NzE3NTUwMA==&mid=502871956&idx=1&sn=332539af7c5a9052ce153b80ef16d285&scene=0#wechat_redirect">
+                             <div class="sub-uc-v-item">
+                                 <i class="left-icon iconfont font-light-green">&#xe6ff;</i>
+                                 <div class="flex-box">             
+                                 <span><em class="msg_count">免费开</em>夺宝店</span>
+                             <i class="right-jt iconfont">&#xe6fa;</i>
+                             </div>
+                             </div>
+                         </a>
+             </li>   
+        </ul>
+    </div>   
+
+
+
+
+
+
+ 
+    <!--设置里面
+        修改密码
+        配送地址
+        退出登录 -->
+
+</div>
+</div>
+<div class="footer-menu-box">
+    <div class="f_menu split-line-top">
+        <ul class="menu_box">
+            <li class="menu_item">
+                <a href="/index/?shop_id={{ shop_id }}">
+                    <p><i class="iconfont">&#xe6ee;</i></p>
+                    <p class="item_txt">首页</p>
+                </a>
+            </li>
+          <li class="menu_item">
+            <a href="/shop/my_selling_list/?shop_id={{ shop_id }}">
+              <p><i class="iconfont">&#58964;</i></p>
+              <p class="item_txt">我的代卖</p>
+            </a>
+          </li>
+            <li class="menu_item">
+          <a href="/shop/cart/?shop_id={{ shop_id }}">
+            <p style="position:relative;" >
+              <i class="iconfont">&#xe6ea;</i>
+              {% if cart_good_number > 0 %}
+               <div class="nav_cart_num" id="nav_cart_num" style="display:block;" >{{cart_good_number}}</div>
+              {% else %}
+               <div class="nav_cart_num" id="nav_cart_num" >0</div>
+              {% endif %}
+            </p>
+            <p class="item_txt">清单</p>
+          </a>
+            </li>
+            <li class="menu_item">
+                <a href="/record/my_all_records/?shop_id={{ shop_id }}">
+                    <p><i class="iconfont">&#xe6e9;</i></p>
+                    <p class="item_txt">夺宝记录</p>
+                </a>
+            </li>
+            <li class="menu_item">
+                <a href="#">
+                    <p><i class="iconfont">&#xe6ec;</i></p>
+                    <p class="item_txt">我</p>
+                </a>
+            </li>
+        </ul>
+        <a href="/o2onew/wap/biz.php?ctl=more"></a>
+    </div>
+</div>                <div class="gotop" data-com="gotop">
+                <a href="#">
+                    <i class="iconfont"></i>
+                </a>
+            </div>
+    </body>
+<html>
