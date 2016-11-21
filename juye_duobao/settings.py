@@ -74,7 +74,7 @@ DATABASES = {
         'NAME': 'one_dolor', #生产
         'USER': 'one_dolor_admin',
         'PASSWORD': 'AAaa1234',
-        'HOST': 'rm-2zee0i324rpa8kqx0o.mysql.rds.aliyuncs.com',
+        'HOST': 'rm-0xidx2c29r4wh1347o.mysql.rds.aliyuncs.com',
         'PORT': '3306',
         # 'OPTIONS': {'charset':'utf8mb4'},  
     }
