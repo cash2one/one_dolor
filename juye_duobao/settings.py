@@ -71,10 +71,10 @@ WSGI_APPLICATION = 'juye_duobao.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'juye_yiyuanduobao',
+        'NAME': 'one_dolor', #生产
         'USER': 'dongshaohui',
-        'PASSWORD': 'dsh5561225',
-        'HOST': 'rdsjjuvbqjjuvbqout.mysql.rds.aliyuncs.com',
+        'PASSWORD': 'Dsh5561225',
+        'HOST': 'rm-2zee0i324rpa8kqx0o.mysql.rds.aliyuncs.com',
         'PORT': '3306',
         # 'OPTIONS': {'charset':'utf8mb4'},  
     }
