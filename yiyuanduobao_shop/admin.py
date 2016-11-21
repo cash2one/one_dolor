@@ -343,7 +343,7 @@ class ShopAdmin(object):
         except:
             shop_manager = None
 
-        current_shop_id = shop_manager.shop_id
+        # current_shop_id = shop_manager.shop_id
         shop_obj.save()
 
         # 店铺展示图片
