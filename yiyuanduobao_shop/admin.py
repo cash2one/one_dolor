@@ -335,10 +335,14 @@ class ShopAdmin(object):
     # 保存对象，默认变为自己的代理商铺
     def save_models(self):
         shop_obj = self.new_obj
-        
+        print "new shop object id = %d" % shop_obj.id
         # 获取当前登录用户
-        shop_manager = ShopManager.objects.get(user_ptr_id=self.user.id)
-        current_shop_id = shop_manager.shop_id
+        shop_manager = None
+        try:
+            shop_manager = ShopManager.objects.get(user_ptr_id=self.user.id)
+        except:
+            shop_manager = None
+        current_shop_id = shop_obj.id
         shop_obj.save()
 
         # 店铺展示图片
@@ -372,7 +376,7 @@ class ShopAdmin(object):
             shop_obj.cert_back_link = settings.OSS_PATH_PREFIX + full_img_link_name   
 
         shop_obj.save()
-        if shop_manager.is_agent == True:       # 如果是代理商
+        if shop_manager and shop_manager.is_agent == True:       # 如果是代理商
             shop_manager.agent_shops.add(shop_obj)
             shop_manager.save()
 
